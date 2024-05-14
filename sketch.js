@@ -24,7 +24,7 @@ let tools = savedData.Tools;
 let bgImg;
 let treeImg;
 let farmImg;
-let buttonImg;
+let waterImg;
 let swarmImg;
 
 let imgHeight;
@@ -38,10 +38,10 @@ let resetButton;
 
 function preload()
 {
-  bgImg = loadImage('floorPlan.png');
-  treeImg = createImg('tree.jpg');
+  bgImg = loadImage('floorPlan2.png');
+  treeImg = createImg('tree2.png');
   farmImg = createImg('farm.jpeg');
-  buttonImg = createImg('buttons.jpg');
+  waterImg = createImg('water.jpg');
   swarmImg = createImg('swarm.jpg');
 }
 
@@ -59,10 +59,10 @@ function setup()
   farmImg.position(imgWidth*0.77, imgHeight*0.3);
   farmImg.mouseClicked(farmUrl);
   farmImg.hide();
-  buttonImg.size(imgWidth*0.2, imgHeight*0.2);
-  buttonImg.position(imgWidth*0.2, imgHeight*0.4);
-  buttonImg.hide();
-  buttonImg.mouseClicked(buttonUrl);
+  waterImg.size(imgWidth*0.2, imgHeight*0.2);
+  waterImg.position(imgWidth*0.2, imgHeight*0.4);
+  waterImg.hide();
+  waterImg.mouseClicked(buttonUrl);
   swarmImg.size(imgWidth*0.15, imgHeight*0.3);
   swarmImg.position(imgWidth*0.71, imgHeight*0.6);
   swarmImg.hide();
@@ -99,11 +99,11 @@ function draw()
   }
   if ((winMouseX >= imgWidth * 0.2 && winMouseX <= imgWidth * .4) && (winMouseY >= imgHeight * 0.4 && winMouseY <= imgHeight * 0.59))
   {
-    buttonImg.show();
+    waterImg.show();
   }
   else
   {
-    buttonImg.hide();
+    waterImg.hide();
   }
   if ((winMouseX >= imgWidth * 0.71 && winMouseX <= imgWidth * 0.86) && (winMouseY >= imgHeight * 0.6 && winMouseY <= imgHeight * 0.9))
   {
@@ -171,8 +171,8 @@ function windowResized()
   treeImg.position(imgWidth*0.25, imgHeight*0.5);
   farmImg.size(imgWidth*0.2, imgHeight*0.25);
   farmImg.position(imgWidth*0.77, imgHeight*0.3);
-  buttonImg.size(imgWidth*0.2, imgHeight*0.2);
-  buttonImg.position(imgWidth*0.2, imgHeight*0.4);
+  waterImg.size(imgWidth*0.2, imgHeight*0.2);
+  waterImg.position(imgWidth*0.2, imgHeight*0.4);
   swarmImg.size(imgWidth*0.15, imgHeight*0.3);
   swarmImg.position(imgWidth*0.71, imgHeight*0.6);
   textSize(imgWidth*0.025);
