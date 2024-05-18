@@ -51,20 +51,20 @@ function setup()
   imgHeight = imgWidth*0.5;
   createCanvas(imgWidth,imgHeight*1.2);
   image(bgImg, 0, imgWidth/10, imgWidth, imgHeight);
-  treeImg.size(imgWidth*0.25, imgHeight*0.5);
-  treeImg.position(imgWidth*0.25, imgHeight*0.5);
+  treeImg.size(imgWidth*0.4, imgHeight*0.8);
+  treeImg.position(imgWidth*0.12, imgHeight*0.29);
   treeImg.hide();
   treeImg.mouseClicked(treeUrl);
-  farmImg.size(imgWidth*0.2, imgHeight*0.25);
-  farmImg.position(imgWidth*0.77, imgHeight*0.3);
+  farmImg.size(imgWidth*0.25, imgHeight*0.25);
+  farmImg.position(imgWidth*0.73, imgHeight*0.25);
   farmImg.mouseClicked(farmUrl);
   farmImg.hide();
-  waterImg.size(imgWidth*0.2, imgHeight*0.2);
-  waterImg.position(imgWidth*0.2, imgHeight*0.4);
+  waterImg.size(imgWidth*0.2, imgHeight*0.25);
+  waterImg.position(imgWidth*0.46, imgHeight*0.25);
   waterImg.hide();
   waterImg.mouseClicked(buttonUrl);
-  swarmImg.size(imgWidth*0.15, imgHeight*0.3);
-  swarmImg.position(imgWidth*0.71, imgHeight*0.6);
+  swarmImg.size(imgWidth*0.2, imgHeight*0.31);
+  swarmImg.position(imgWidth*0.685, imgHeight*0.56);
   swarmImg.hide();
   swarmImg.mouseClicked(swarmUrl);
   textSize(imgWidth*0.025);
@@ -81,7 +81,7 @@ function setup()
 
 function draw() 
 {
-  if ((winMouseX >= imgWidth*0.25 && winMouseX <= imgWidth*0.5) && (winMouseY >= imgHeight*0.5 && winMouseY <= imgHeight*1))
+  if ((winMouseX >= imgWidth*0.25 && winMouseX <= imgWidth*0.4) && (winMouseY >= imgHeight*0.3 && winMouseY <= imgHeight*0.95))
   {
     treeImg.show();
   }
@@ -89,7 +89,7 @@ function draw()
   {
     treeImg.hide();
   }
-  if ((winMouseX >= imgWidth * 0.77 && winMouseX <= imgWidth * 0.97) && (winMouseY >= imgHeight * 0.3 && winMouseY <= imgHeight * 0.55))
+  if ((winMouseX >= imgWidth * 0.73 && winMouseX <= imgWidth * 0.97) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.5))
   {
     farmImg.show();
   }
@@ -97,7 +97,7 @@ function draw()
   {
     farmImg.hide();
   }
-  if ((winMouseX >= imgWidth * 0.2 && winMouseX <= imgWidth * .4) && (winMouseY >= imgHeight * 0.4 && winMouseY <= imgHeight * 0.59))
+  if ((winMouseX >= imgWidth * 0.45 && winMouseX <= imgWidth * 0.65) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.5))
   {
     waterImg.show();
   }
