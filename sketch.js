@@ -38,7 +38,7 @@ let resetButton;
 
 function preload()
 {
-  bgImg = loadImage('floorPlan2.png');
+  bgImg = loadImage('floorPlan.png');
   treeImg = createImg('tree2.png');
   farmImg = createImg('farm.jpeg');
   waterImg = createImg('water.jpg');
