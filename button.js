@@ -1,6 +1,6 @@
 let savedData = JSON.parse(localStorage.getItem('thirdThingData'));   //load saved data
 
-let containerHeight = 300; // Height of the container
+let containerHeight = 400; // Height of the container
 let waterHeight = 0; // Initial water level
 let increment = 20; // Increment of water level
 let timer = 0;
@@ -32,11 +32,11 @@ function draw() {
 
   // Draw container
   fill(200);
-  rect(150, 50, 100, containerHeight);
+  rect(width/2-100, 150, 200, containerHeight);
 
   // Draw water
   fill(0, 0, 255);
-  rect(150, 50 + containerHeight - waterHeight, 100, waterHeight);
+  rect(width/2-95, 145 + containerHeight - waterHeight, 190, waterHeight);
 
   // Draw text
   fill(0);
@@ -45,7 +45,7 @@ function draw() {
   text("Click to fill the container", width / 2, height - 20);
 
   // Check if game over
-  if (waterHeight >= containerHeight) {
+  if (waterHeight >= containerHeight - 5) {
     gameOver = true;
   }
   if (gameOver)
@@ -72,6 +72,10 @@ function mouseClicked() {
     waterHeight += increment;
     timeThreshold--;
   }
+  if (waterHeight > containerHeight)
+    {
+      waterHeight = containerHeight-5;
+    }
 }
 
 function saveFunction()
