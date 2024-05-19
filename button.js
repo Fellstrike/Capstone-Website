@@ -12,7 +12,7 @@ let restartButton;
 let backButton;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(700, 700);
   backButton = createButton('Gallery');
   backButton.style('font-size', 30 + 'px');
   backButton.size(110, 50);

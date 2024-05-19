@@ -20,21 +20,21 @@ let restartButton;
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
-  particleSize = floor(min(width, height) / 5); // Adjust particle size based on canvas size
+  particleSize = floor(min(width, height) / 4); // Adjust particle size based on canvas size
   shapeSize = floor(min(width, height) / 2); // Adjust shape size based on canvas size
   generateShape();
   calculateTotalArea();
-  generateParticles(floor(totalArea / (particleSize * particleSize)) + floor(particleSize / 5));
+  generateParticles(floor(totalArea / (particleSize * particleSize)) + floor(particleSize / 15));
   backButton = createButton('Gallery');
   backButton.style('font-size', 30 + 'px');
   backButton.size(110, 50);
-  backButton.position(width * 0.3, height*0.55);
+  backButton.position(width * 0.3, height*0.65);
   backButton.hide();
   backButton.mouseClicked(toMain);
   restartButton = createButton('Restart');
   restartButton.style('font-size', 30 + 'px');
   restartButton.size(110, 50);
-  restartButton.position(width * 0.55, height*0.55);
+  restartButton.position(width * 0.55, height*0.65);
   restartButton.hide();
   restartButton.mouseClicked(resetGame);
 }
@@ -160,7 +160,7 @@ function resetGame() {
   resetCounter = 0;
   generateShape();
   calculateTotalArea();
-  generateParticles(floor(totalArea / (particleSize * particleSize)) + floor(particleSize / 5));
+  generateParticles(floor(totalArea / (particleSize * particleSize)) + floor(particleSize / 15));
   saveScore = false;
   restartButton.hide();
   backButton.hide();

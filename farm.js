@@ -19,6 +19,7 @@ let tools = savedData.Tools;
 function setup() {
   print(savedData.Patches);
   createCanvas(800, 600);
+
   // Creating patches of dirt
   let spacingX = width / (cols + 1);
   let spacingY = height / (rows + 1);
@@ -44,37 +45,73 @@ function setup() {
   //backButton.hide();
   backButton.mouseClicked(toMain);
 
-  plantButton = createButton("Plant");
+  plantButton = createButton("Seeds: " + seed);
   plantButton.style('font-size', 30 + 'px');
-  plantButton.size(110, 50);
+  plantButton.size(150, 50);
   plantButton.position(20, 10);
 
-  waterButton = createButton("Water");
+  waterButton = createButton("Water: " + water);
   waterButton.style('font-size', 30 + 'px');
-  waterButton.size(110, 50);
-  waterButton.position(140, 10);
+  waterButton.size(150, 50);
+  waterButton.position(180, 10);
 
-  harvestButton = createButton("Harvest");
+  harvestButton = createButton("Tools: " + tools);
   harvestButton.style('font-size', 29 + 'px');
-  harvestButton.size(110, 50);
-  harvestButton.position(260, 10);
+  harvestButton.size(150, 50);
+  harvestButton.position(340, 10);
 
   if (seed > 0){
   plantButton.mousePressed(() => {
     action = "plant";
   });}
+  else {
+  plantButton.mousePressed(() => {
+    treeUrl();
+  });
+  }
   if (tools > 0){
   harvestButton.mousePressed(() => {
     action = "harvest";
   });}
+  else {
+  harvestButton.mousePressed(() => {
+    swarmUrl();
+  });
+  }
   if (water > 0){
   waterButton.mousePressed(() => {
     action = "water";
   });}
+  else {
+  waterButton.mousePressed(() => {
+    buttonUrl();
+  });
+  }
+}
+
+function treeUrl()
+{
+  //print("This is where the code to load the url for the tree.");
+  window.location.assign('tree.html');
+}
+
+function buttonUrl()
+{
+ // print("Ditto for Button stuff");
+  window.location.assign('button.html');
+}
+
+function swarmUrl()
+{
+  //print("URL for swarm stuff");
+  window.location.assign('swarm.html');
 }
 
 function draw() {
   background(220);
+
+  text('Collect items from other games.', width/20, height-40);
+  text('Then come use them here.', width/12, height-15);
 
   // Displaying patches
   for (let patch of patches) {
@@ -112,7 +149,7 @@ function draw() {
 
   noStroke();
   textSize(30);
-  text(currentAction, 450, 45);
+  text(currentAction, 550, 45);
 
   if (seed == 0 && water == 0 && tools == 0)
     {
@@ -147,16 +184,21 @@ function mouseClicked() {
       if (action === "plant" && seed > 0) {
         currentPatch.plantSeed();
         if (currentPatch.planted)
-          {seed--;}
+          {seed--;
+            plantButton.html("Seeds: " + seed);
+          }
       } else if (action === "water" && water > 0) {
         currentPatch.water();
         if (currentPatch.watered)
-          {water--;}
+          {water--;
+            waterButton.html("Water: " + water);
+          }
       } else if (action === "harvest" && tools > 0) {
-        currentPatch.harvest();
         if (currentPatch.grown)
         { tools--;
+          harvestButton.html("Tools: " + tools);
           score++;
+          currentPatch.harvest();
         }
       }
       return;

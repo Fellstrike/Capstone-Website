@@ -9,11 +9,13 @@ let obstacles = [];
 let score = 0;
 let maxAcorns = 10;
 let timer = 0;
-let maxTime = 15;
+let maxTime = 10;
 let dataToSave = false;
 
 let backButton;
 let restartButton;
+
+let acornPic;
 
 function setup() {
   createCanvas(600, 400);
@@ -21,15 +23,17 @@ function setup() {
   backButton = createButton('Gallery');
   backButton.style('font-size', 30 + 'px');
   backButton.size(110, 50);
-  backButton.position(width * 0.3, height*0.55);
+  backButton.position(width * 0.3, height*0.7);
   backButton.hide();
   backButton.mouseClicked(toMain);
   restartButton = createButton('Restart');
   restartButton.style('font-size', 30 + 'px');
   restartButton.size(110, 50);
-  restartButton.position(width * 0.55, height*0.55);
+  restartButton.position(width * 0.55, height*0.7);
   restartButton.hide();
   restartButton.mouseClicked(resetGame);
+
+  acornPic = loadImage('acorn.png');
 }
 
 function draw() {
@@ -96,12 +100,13 @@ function gameOver()
   textSize(40);
   if(score >= maxAcorns)
   {
-    text("You got some seed!", width/3, height/2);
+    text("You got some seed!", width/4, height/2);
     saveData();
   }
   else
   {
-    text("You didn't get enough. Try Again", width/4, height/2);
+    text("You didn't get enough acorns.", width/20, height/3);
+    text("Try Again", width/3, height/2);
   }
   restartButton.show();
   backButton.show();
@@ -164,19 +169,20 @@ class Acorn {
   constructor() {
     this.x = random(width);
     this.y = 0;
-    this.r = 15;
-    this.speed = 5;
+    this.r = 30;
+    this.speed = random(2, 5);
   }
   
   update() {
     this.y += this.speed;
   }
   
-  show() {
+  show() {/*
     fill(255, 204, 0);
     ellipse(this.x, this.y, this.r * 2, this.r * 2 + this.r*0.2);
     fill(200, 100, 50);
-    ellipse(this.x, this.y - this.r * 0.5, this.r *2, this.r);
+    ellipse(this.x, this.y - this.r * 0.5, this.r *2, this.r);*/
+    image(acornPic, this.x, this.y, this.r*2, this.r*2);
   }
   
   offscreen() {
@@ -184,8 +190,12 @@ class Acorn {
   }
   
   hits(player) {
-    let d = dist(this.x, this.y, player.x + player.width * 0.51, player.y);
-    return (d < this.r + player.height / 2);
+    return (
+      player.x <= this.x + this.r*2 &&
+      player.x + player.width >= this.x &&
+      player.y  <= this.y + this.r*1.6 &&
+      player.y + player.height >= this.y
+    );
   }
 }
 
@@ -210,15 +220,15 @@ class Obstacle {
   }
   
   offscreen() {
-    return (this.y > height);
+    return (this.y > height-this.r);
   }
   
   hits(player) {
     return (
       player.x < this.x + this.width &&
-      player.x + player.width > this.x &&
+      player.x > this.x &&
       player.y < this.y + this.height &&
-      player.y + player.height > this.y
+      player.y > this.y
     );
   }
 }
