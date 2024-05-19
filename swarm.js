@@ -13,7 +13,7 @@ let particleSize = 100; // Adjust particle size here
 let shapeSize;
 let shapeColor;
 let resetCounter = 0;
-let tool = 0;
+let tool = savedData.Tools;
 
 let backButton;
 let restartButton;
