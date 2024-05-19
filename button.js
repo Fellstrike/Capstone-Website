@@ -5,7 +5,7 @@ let waterHeight = 0; // Initial water level
 let increment = 20; // Increment of water level
 let timer = 0;
 let timeThreshold = 20;
-let water = 0;
+let water = savedData.Water;
 let gameOver = false; // Game over flag
 let saveGame = false;
 let restartButton;
