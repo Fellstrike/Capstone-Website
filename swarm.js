@@ -19,8 +19,10 @@ let backButton;
 let restartButton;
 
 function setup() {
+  canvasHeight = windowHeight*0.9;
+  canvasWidth = windowWidth*0.9;
   createCanvas(canvasWidth, canvasHeight);
-  particleSize = floor(min(width, height) / 4); // Adjust particle size based on canvas size
+  particleSize = floor(min(width, height) / 3.75); // Adjust particle size based on canvas size
   shapeSize = floor(min(width, height) / 2); // Adjust shape size based on canvas size
   generateShape();
   calculateTotalArea();
@@ -213,8 +215,8 @@ class Particle {
           let d = newPos.dist(particles[i].pos);
           while (d < minDist) {
             minDist = d;
-            newPos.x += random(-particleSize, particleSize);
-            newPos.y += random(-particleSize, particleSize);
+            newPos.x += random(-minDist, minDist);
+            newPos.y += random(-minDist, minDist);
             moved = true;
             d = newPos.dist(particles[i].pos);
           }

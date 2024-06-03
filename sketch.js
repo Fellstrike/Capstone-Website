@@ -26,6 +26,10 @@ let treeImg;
 let farmImg;
 let waterImg;
 let swarmImg;
+let treeMap;
+let farmMap;
+let waterMap;
+let swarmMap;
 
 let imgHeight;
 let imgWidth;
@@ -39,38 +43,46 @@ let locationNum = 0;
 
 function preload()
 {
-  bgImg = loadImage('floorPlan2.png');
-  treeImg = createImg('tree2.png');
-  farmImg = createImg('farm.jpeg');
-  waterImg = createImg('water.jpg');
-  swarmImg = createImg('swarm.jpg');
+  bgImg = loadImage('Paragon.png');
+  treeImg = createImg('tree/MainTreeIcon.png');
+  farmImg = createImg('FarmIcon.png');
+  waterImg = createImg('duck/fountain_icon.png');
+  swarmImg = createImg('swarmIcon.png');
+  treeMap = loadImage('tree/DrainTreeIcon.png');
+  farmMap = loadImage('grayfarmicon.png');
+  waterMap = loadImage('duck/oldfountain_icon.png');
+  swarmMap = loadImage('oldSwarmIcon.png');
 }
 
 function setup() 
 {
-  imgWidth = windowWidth-windowWidth*0.205;
-  imgHeight = imgWidth*0.5;
-  createCanvas(imgWidth,imgHeight*1.2);
-  image(bgImg, 0, imgWidth/10, imgWidth, imgHeight);
-  treeImg.size(imgWidth*0.4, imgHeight*0.8);
-  treeImg.position(imgWidth*0.12, imgHeight*0.29);
+  imgWidth = windowWidth*1.1;
+  imgHeight = windowHeight*1.1;
+  createCanvas(windowWidth, windowHeight);
+  image(bgImg, 0, 35, imgWidth, imgHeight);
+  image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
+  image(farmMap, imgWidth*0.684, imgHeight*0.16, 434, 434);
+  image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
+  image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
+  treeImg.size(imgWidth*0.23, imgHeight*0.57);
+  treeImg.position(imgWidth*0.15, imgHeight*0.25);
   treeImg.hide();
   treeImg.mouseClicked(treeUrl);
-  farmImg.size(imgWidth*0.25, imgHeight*0.25);
-  farmImg.position(imgWidth*0.73, imgHeight*0.25);
+  farmImg.size(434, 434);
+  farmImg.position(imgWidth*0.684, imgHeight*0.16);
   farmImg.mouseClicked(farmUrl);
   farmImg.hide();
-  waterImg.size(imgWidth*0.2, imgHeight*0.25);
-  waterImg.position(imgWidth*0.46, imgHeight*0.25);
+  waterImg.size(imgWidth*0.09, imgHeight*0.18);
+  waterImg.position(imgWidth*0.49, imgHeight*0.265);
   waterImg.hide();
   waterImg.mouseClicked(buttonUrl);
   swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.685, imgHeight*0.56);
+  swarmImg.position(imgWidth*0.645, imgHeight*0.51);
   swarmImg.hide();
   swarmImg.mouseClicked(swarmUrl);
 
-  textSize(imgWidth*0.025);
-  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.15, imgHeight*0.1);
+  textSize(imgWidth*0.02);
+  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.16, imgHeight*0.1);
   text('Seeds:' + acornNum, imgWidth*0.21, imgHeight*0.2);
   text('Water:' + water, imgWidth*0.345, imgHeight * 0.2);
   text('Tools:' + tools, imgWidth*0.48, imgHeight*0.2);
@@ -84,7 +96,7 @@ function setup()
 
 function draw() 
 {
-  if (locationNum == 1 || ((winMouseX >= imgWidth*0.25 && winMouseX <= imgWidth*0.4) && (winMouseY >= imgHeight*0.3 && winMouseY <= imgHeight*0.95)))
+  if (locationNum == 1 || ((winMouseX >= imgWidth*0.225 && winMouseX <= imgWidth*0.32) && (winMouseY >= imgHeight*0.25 && winMouseY <= imgHeight*0.825)))
   {
     treeImg.show();
   }
@@ -92,7 +104,7 @@ function draw()
   {
     treeImg.hide();
   }
-  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.73 && winMouseX <= imgWidth * 0.97) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.5)))
+  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.73 && winMouseX <= imgWidth * 0.85) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.5)))
   {
     farmImg.show();
   }
@@ -100,7 +112,7 @@ function draw()
   {
     farmImg.hide();
   }
-  if (locationNum == 2 || ((winMouseX >= imgWidth * 0.45 && winMouseX <= imgWidth * 0.65) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.5)))
+  if (locationNum == 2 || ((winMouseX >= imgWidth * 0.485 && winMouseX <= imgWidth * 0.585) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.45)))
   {
     waterImg.show();
   }
@@ -108,7 +120,7 @@ function draw()
   {
     waterImg.hide();
   }
-  if (locationNum == 4 || ((winMouseX >= imgWidth * 0.71 && winMouseX <= imgWidth * 0.86) && (winMouseY >= imgHeight * 0.6 && winMouseY <= imgHeight * 0.9)))
+  if (locationNum == 4 || ((winMouseX >= imgWidth * 0.645 && winMouseX <= imgWidth * 0.84) && (winMouseY >= imgHeight * 0.51 && winMouseY <= imgHeight * 0.82)))
   {
     swarmImg.show();
   }
@@ -130,14 +142,36 @@ function resetScores()
   savedData.Tools = tools;
   savedData.PlotsMade = 0;
   savedData.Patches = [];
+  savedData.Score = score;
   localStorage.setItem('thirdThingData', JSON.stringify(savedData)); //saves data
-  background(255);
-  image(bgImg, 0, imgWidth/10, imgWidth, imgHeight);
-  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.15, imgHeight*0.1);
-  text('Acorns:' + acornNum, imgWidth*0.21, imgHeight*0.2);
+  imgWidth = windowWidth*1.1;
+  imgHeight = windowHeight*1.1;
+  createCanvas(windowWidth, windowHeight);
+  image(bgImg, 0, 35, imgWidth, imgHeight);
+  image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
+  image(farmMap, imgWidth*0.684, imgHeight*0.16, 434, 434);
+  image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
+  image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
+  treeImg.size(imgWidth*0.23, imgHeight*0.57);
+  treeImg.position(imgWidth*0.15, imgHeight*0.25);
+  treeImg.hide();
+  farmImg.size(434, 434);
+  farmImg.position(imgWidth*0.684, imgHeight*0.16);
+  farmImg.hide();
+  waterImg.size(imgWidth*0.09, imgHeight*0.18);
+  waterImg.position(imgWidth*0.49, imgHeight*0.265);
+  waterImg.hide();
+  swarmImg.size(imgWidth*0.2, imgHeight*0.31);
+  swarmImg.position(imgWidth*0.645, imgHeight*0.51);
+  swarmImg.hide();
+
+  textSize(imgWidth*0.02);
+  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.16, imgHeight*0.1);
+  text('Seeds:' + acornNum, imgWidth*0.21, imgHeight*0.2);
   text('Water:' + water, imgWidth*0.345, imgHeight * 0.2);
   text('Tools:' + tools, imgWidth*0.48, imgHeight*0.2);
   text('Score:' + score, imgWidth*0.615, imgHeight * 0.2);
+  resetButton.size(imgWidth*0.075, imgHeight*0.05);
   resetButton.position(imgWidth*0.79, imgHeight*0.155);
 }
 
@@ -204,25 +238,33 @@ function swarmUrl()
 
 function windowResized()
 {
-  imgWidth = windowWidth-windowWidth*0.205;
-  imgHeight = imgWidth*0.5;
-  createCanvas(imgWidth,imgHeight*1.2);
-  image(bgImg, 0, imgWidth/10, imgWidth, imgHeight);
-  treeImg.size(imgWidth*0.4, imgHeight*0.8);
-  treeImg.position(imgWidth*0.12, imgHeight*0.29);
-  farmImg.size(imgWidth*0.25, imgHeight*0.25);
-  farmImg.position(imgWidth*0.73, imgHeight*0.25);
-  waterImg.size(imgWidth*0.2, imgHeight*0.25);
-  waterImg.position(imgWidth*0.46, imgHeight*0.25);
+  imgWidth = windowWidth*1.1;
+  imgHeight = windowHeight*1.1;
+  createCanvas(windowWidth, windowHeight);
+  image(bgImg, 0, 35, imgWidth, imgHeight);
+  image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
+  image(farmMap, imgWidth*0.684, imgHeight*0.16, 434, 434);
+  image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
+  image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
+  treeImg.size(imgWidth*0.23, imgHeight*0.57);
+  treeImg.position(imgWidth*0.15, imgHeight*0.25);
+  treeImg.hide();
+  farmImg.size(434, 434);
+  farmImg.position(imgWidth*0.684, imgHeight*0.16);
+  farmImg.hide();
+  waterImg.size(imgWidth*0.09, imgHeight*0.18);
+  waterImg.position(imgWidth*0.49, imgHeight*0.265);
+  waterImg.hide();
   swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.685, imgHeight*0.56);
-  textSize(imgWidth*0.025);
-  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.15, imgHeight*0.1);
-  text('Acorns:' + acornNum, imgWidth*0.21, imgHeight*0.2);
+  swarmImg.position(imgWidth*0.645, imgHeight*0.51);
+  swarmImg.hide();
+
+  textSize(imgWidth*0.02);
+  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.16, imgHeight*0.1);
+  text('Seeds:' + acornNum, imgWidth*0.21, imgHeight*0.2);
   text('Water:' + water, imgWidth*0.345, imgHeight * 0.2);
   text('Tools:' + tools, imgWidth*0.48, imgHeight*0.2);
   text('Score:' + score, imgWidth*0.615, imgHeight * 0.2);
-  resetButton.style('font-size', imgWidth*0.022 + 'px');
   resetButton.size(imgWidth*0.075, imgHeight*0.05);
   resetButton.position(imgWidth*0.79, imgHeight*0.155);
 }
