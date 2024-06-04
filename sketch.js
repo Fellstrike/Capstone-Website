@@ -45,8 +45,7 @@ let selectSound;
 
 //need images for swarm, parth, and threshold
 
-function preload()
-{
+function preload() {
   bgImg = loadImage('Paragon.png');
   treeImg = createImg('tree/MainTreeIcon.png');
   farmImg = createImg('FarmIcon.png');
@@ -108,7 +107,7 @@ function setup()
 
 function draw() 
 {
-  if (location == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.22 && winMouseY <= imgHeight*0.245))){
+  if (location == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.22 && winMouseY <= imgHeight*0.27))){
     logoImg.show();
   }
   else {
@@ -122,7 +121,7 @@ function draw()
   {
     treeImg.hide();
   }
-  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.73 && winMouseX <= imgWidth * 0.85) && (winMouseY >= imgHeight * 0.19 && winMouseY <= imgHeight * 0.39)))
+  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.72 && winMouseX <= imgWidth * 0.83) && (winMouseY >= imgHeight * 0.26 && winMouseY <= imgHeight * 0.49)))
   {
     farmImg.show();
   }
