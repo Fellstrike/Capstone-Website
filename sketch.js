@@ -39,6 +39,8 @@ let resetButton;
 
 let locationNum = 0;
 
+let selectSound;
+
 //need images for swarm, parth, and threshold
 
 function preload()
@@ -52,6 +54,7 @@ function preload()
   farmMap = loadImage('grayfarmicon.png');
   waterMap = loadImage('duck/oldfountain_icon.png');
   swarmMap = loadImage('oldSwarmIcon.png');
+  selectSound = loadSound('sounds/select.wav');
 }
 
 function setup() 
@@ -61,15 +64,15 @@ function setup()
   createCanvas(windowWidth, windowHeight);
   image(bgImg, 0, 35, imgWidth, imgHeight);
   image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
-  image(farmMap, imgWidth*0.684, imgHeight*0.16, 434, 434);
+  image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
   image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
   treeImg.position(imgWidth*0.15, imgHeight*0.25);
   treeImg.hide();
   treeImg.mouseClicked(treeUrl);
-  farmImg.size(434, 434);
-  farmImg.position(imgWidth*0.684, imgHeight*0.16);
+  farmImg.size(width*0.2, width*0.2);
+  farmImg.position(imgWidth*0.684, imgHeight*0.19);
   farmImg.mouseClicked(farmUrl);
   farmImg.hide();
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
@@ -104,7 +107,7 @@ function draw()
   {
     treeImg.hide();
   }
-  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.73 && winMouseX <= imgWidth * 0.85) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.5)))
+  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.73 && winMouseX <= imgWidth * 0.85) && (winMouseY >= imgHeight * 0.19 && winMouseY <= imgHeight * 0.39)))
   {
     farmImg.show();
   }
@@ -149,14 +152,14 @@ function resetScores()
   createCanvas(windowWidth, windowHeight);
   image(bgImg, 0, 35, imgWidth, imgHeight);
   image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
-  image(farmMap, imgWidth*0.684, imgHeight*0.16, 434, 434);
+  image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
   image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
   treeImg.position(imgWidth*0.15, imgHeight*0.25);
   treeImg.hide();
-  farmImg.size(434, 434);
-  farmImg.position(imgWidth*0.684, imgHeight*0.16);
+  farmImg.size(width*0.2, width*0.2);
+  farmImg.position(imgWidth*0.684, imgHeight*0.19);
   farmImg.hide();
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
   waterImg.position(imgWidth*0.49, imgHeight*0.265);
@@ -243,14 +246,14 @@ function windowResized()
   createCanvas(windowWidth, windowHeight);
   image(bgImg, 0, 35, imgWidth, imgHeight);
   image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
-  image(farmMap, imgWidth*0.684, imgHeight*0.16, 434, 434);
+  image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
   image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
   treeImg.position(imgWidth*0.15, imgHeight*0.25);
   treeImg.hide();
-  farmImg.size(434, 434);
-  farmImg.position(imgWidth*0.684, imgHeight*0.16);
+  farmImg.size(width*0.2, width*0.2);
+  farmImg.position(imgWidth*0.684, imgHeight*0.19);
   farmImg.hide();
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
   waterImg.position(imgWidth*0.49, imgHeight*0.265);

@@ -32,6 +32,11 @@ let waterButtonText;
 let plantButtonText;
 let harvestButtonText;
 
+let harvestSound;
+let plantSound;
+let waterSound;
+let selectSound;
+
 function preload() {
   farmLand = loadImage('farm/FarmLand.png');
   badSoil = loadImage('farm/BadSoil.png');
@@ -42,6 +47,10 @@ function preload() {
   soilImg = loadImage('farm/Soil.png');
   waterImg = createImg('farm/Water_Icon.png');
   wateredSoil = loadImage('farm/WateredSoil.png');
+  harvestSound = loadSound('sounds/Harvest.wav');
+  plantSound = loadSound('sounds/Plant.wav');
+  waterSound = loadSound('sounds/water.wav');
+  selectSound = loadSound('sounds/Select.wav');
 }
 
 function setup() {

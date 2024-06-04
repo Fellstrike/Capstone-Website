@@ -21,6 +21,12 @@ let tvPic;
 let clockPic;
 let treebg;
 
+let acornSound;
+let basketSound;
+let collectSound;
+let tvSound;
+let winSound;
+
 function setup() {
   createCanvas(windowWidth-100, windowHeight-50);
   treebg = loadImage('tree/TreeBackground.png');
@@ -43,6 +49,12 @@ function setup() {
   basket = loadImage('tree/Basket.png');
   tvPic = loadImage('tree/Tv.png');
   clockPic = loadImage('tree/Clock.png');
+
+  acornSound = loadSound('sounds/AcornSpawn.wav');
+  basketSound = loadSound('sounds/BasketMoveLoop.wav');
+  collectSound = loadSound('sounds/CollectAcorn.wav');
+  tvSound = loadSound('sounds/CollectTv.wav');
+  winSound = loadSound('sounds/WinGame.wav');
 }
 
 function draw() {

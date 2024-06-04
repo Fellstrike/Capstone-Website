@@ -1,3 +1,8 @@
+/*
+NEEDS INSTRUCTIONS ON MAIN PAGE!!
+*/
+
+
 let savedData = JSON.parse(localStorage.getItem('thirdThingData'));   //load saved data
 
 let waterNum =  savedData.Water;
@@ -108,6 +113,11 @@ function draw() {
   rect(CheckMove, height / 1.5, 20, 50); // Moving Box
   fill(RedText, 50, 50);
   text(DuckTimer, width / 2.3, height / 3.2);
+  push();
+  textSize(width*0.025);
+  fill(255);
+  text("Click or Press space when the bar hits the center to help the duck drink!", width*0.1, height/1.25);
+  pop();
 
   if (!flip) {
     CheckMove += Speed; // SPEED
@@ -127,7 +137,7 @@ function draw() {
     DuckCount.play();
   }
 
-  if (keyIsPressed && key === ' ' && CheckMove >= width*0.47 && CheckMove <= width*0.51 && !click && !Lose) { // Duck CLICK
+  if (((keyIsPressed && key === ' ') || mouseIsPressed)&& CheckMove >= width*0.47 && CheckMove <= width*0.51 && !click && !Lose) { // Duck CLICK
     click = true;
     ClickNum += 1;
     DuckPress.play();
@@ -137,7 +147,7 @@ function draw() {
     DuckTimer += 1;
     RedText -= 20;
   } 
-  else if (keyIsPressed && key === ' ' && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
+  else if (((keyIsPressed && key === ' ') || mouseIsPressed) && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
     DuckExplode = 1;
     DuckBoom.play();
     Lose = true;
@@ -196,14 +206,15 @@ function resetGame()
   ClickNum = 0;
   ShakeX = width / 2;
   ShakeY = height / 2;
-  CheckMove = width / 2.9;
-  DuckTImer = 5;
+  CheckMove = width * 0.6;
   Speed = width*0.004;
   DuckExplode = 0;
   Lose = false;
+  DuckTimer = 5;
   let rotationAngle = 0;
   let rotationSpeed = 0.05;
   restartButton.hide();
   backButton.hide();
   DuckBoom.stop();
+
 }

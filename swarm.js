@@ -17,6 +17,9 @@ let tool = savedData.Tools;
 
 let backButton;
 let restartButton;
+let winSound;
+let loseSound;
+let hoveSound;
 
 function setup() {
   canvasHeight = windowHeight*0.9;
@@ -39,6 +42,9 @@ function setup() {
   restartButton.position(width * 0.55, height*0.65);
   restartButton.hide();
   restartButton.mouseClicked(resetGame);
+  let winSound = loadSound('sounds/WinGame.wav');
+  let loseSound = loadSound('sounds/LoseGame.wav');
+  let hoveSound = loadsound('sounds/HoverSound.wav');
 }
 
 function draw() {
