@@ -44,7 +44,7 @@ function setup() {
   restartButton.mouseClicked(resetGame);
   let winSound = loadSound('sounds/WinGame.wav');
   let loseSound = loadSound('sounds/LoseGame.wav');
-  let hoveSound = loadsound('sounds/HoverSound.wav');
+  let hoveSound = loadSound('sounds/HoverSound.wav');
 }
 
 function draw() {
