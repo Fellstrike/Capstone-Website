@@ -233,7 +233,8 @@ function draw() {
   }
 }
 
-function toMain() {
+function saveData()
+{
   savedData.Acorns = seed;
   savedData.Water = water;
   savedData.Tools = tools;
@@ -248,6 +249,10 @@ function toMain() {
   });
   savedData.Patches = patchStates;
   localStorage.setItem('thirdThingData', JSON.stringify(savedData));
+}
+
+function toMain() {
+  saveData();
   window.location.assign('index.html');
 }
 
@@ -272,9 +277,11 @@ function mouseClicked() {
           tools--;
           harvestButtonText.html(tools);
           score++;
+
           currentPatch.harvest();
         }
       }
+      saveData();
       return;
     }
   }

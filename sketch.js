@@ -30,6 +30,8 @@ let treeMap;
 let farmMap;
 let waterMap;
 let swarmMap;
+let logoImg;
+let eggLogo;
 
 let imgHeight;
 let imgWidth;
@@ -55,6 +57,8 @@ function preload()
   waterMap = loadImage('duck/oldfountain_icon.png');
   swarmMap = loadImage('oldSwarmIcon.png');
   selectSound = loadSound('sounds/select.wav');
+  logoImg = createImg('OldFashionedLogoColor.png');
+  eggLogo = loadImage('easterEggLogo.png');
 }
 
 function setup() 
@@ -67,6 +71,11 @@ function setup()
   image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
   image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
+  image(eggLogo, imgWidth*0.595, imgHeight*0.22, imgWidth*0.025, imgWidth*0.025);
+  logoImg.size(imgWidth*0.025, imgWidth*0.025);
+  logoImg.position(imgWidth*0.595, imgHeight*0.22);
+  logoImg.mouseClicked(secret1);
+  logoImg.hide();
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
   treeImg.position(imgWidth*0.15, imgHeight*0.25);
   treeImg.hide();
@@ -99,6 +108,12 @@ function setup()
 
 function draw() 
 {
+  if (location == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.22 && winMouseY <= imgHeight*0.245))){
+    logoImg.show();
+  }
+  else {
+    logoImg.hide();
+  }
   if (locationNum == 1 || ((winMouseX >= imgWidth*0.225 && winMouseX <= imgWidth*0.32) && (winMouseY >= imgHeight*0.25 && winMouseY <= imgHeight*0.825)))
   {
     treeImg.show();
@@ -219,6 +234,11 @@ function treeUrl()
 {
   //print("This is where the code to load the url for the tree.");
   window.location.assign('tree.html');
+}
+
+function secret1()
+{
+  window.location.assign('secret1.html');
 }
 
 function farmUrl()
