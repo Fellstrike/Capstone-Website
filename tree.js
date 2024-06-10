@@ -26,6 +26,7 @@ let basketSound;
 let collectSound;
 let tvSound;
 let winSound;
+let loseSound;
 
 function setup() {
   createCanvas(windowWidth-100, windowHeight-50);
@@ -55,6 +56,7 @@ function setup() {
   collectSound = loadSound('sounds/CollectAcorn.wav');
   tvSound = loadSound('sounds/CollectTv.wav');
   winSound = loadSound('sounds/WinGame.wav');
+  loseSound = loadSound('sounds/LoseGame.wav');
 }
 
 function draw() {
@@ -76,11 +78,17 @@ function draw() {
     }
   // Create new acorns randomly
   if (random(1) < 0.03) {
+    if (!acornSound.isPlaying()) {
+      acornSound.play();
+    }
     acorns.push(new Acorn());
   }
   
   // Create new obstacles randomly
   if (random(1) < 0.005) {
+    if (!tvSound.isPlaying()) {
+      tvSound.play();
+    }
     obstacles.push(new Obstacle());
   }
   
@@ -91,6 +99,7 @@ function draw() {
     
     // Check if acorn is caught
     if (acorns[i].hits(player)) {
+      collectSound.play();
       score++;
       acorns.splice(i, 1);
     } else if (acorns[i].offscreen()) {
@@ -131,11 +140,17 @@ function gameOver()
   textSize(width/20);
   if(score >= maxAcorns)
   {
+    if (!winSound.isPlaying()) {
+      winSound.play();
+    }
     text("You got some seed!", width*0.28, height/2);
     saveData();
   }
   else
   {
+    if (!loseSound.isPlaying()) {
+      loseSound.play();
+    }
     text("You didn't get enough acorns.", width*0.1, height/3);
     text("Try Again", width*0.35, height/2);
   }
@@ -190,6 +205,7 @@ class Player {
   
   move(dir) {
     this.xspeed = this.speed * dir;
+    basketSound.play();
   }
   
   stop() {

@@ -18,7 +18,6 @@ let tool = savedData.Tools;
 let backButton;
 let restartButton;
 let winSound;
-let loseSound;
 let hoveSound;
 
 function setup() {
@@ -43,7 +42,6 @@ function setup() {
   restartButton.hide();
   restartButton.mouseClicked(resetGame);
   let winSound = loadSound('sounds/WinGame.wav');
-  let loseSound = loadSound('sounds/LoseGame.wav');
   let hoveSound = loadSound('sounds/HoverSound.wav');
 }
 
@@ -61,6 +59,7 @@ function draw() {
 
   // Update and display particles
   for (let i = particles.length - 1; i >= 0; i--) {
+    hoveSound.play();
     particles[i].update();
     particles[i].display();
     particles[i].constrain();
@@ -72,7 +71,7 @@ function draw() {
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(24);
-    text("Shape filled! Click to reset.", width / 2, height / 2);
+    text("Shape filled! You gained something special.", width / 2, height / 2);
     resetCounter++;
     saveFunction();
     backButton.show();
@@ -144,10 +143,10 @@ function calculateTotalArea() {
 }
 
 function mouseClicked() {
-  if (shapeIsFilled && resetCounter >= 60) {
+  /*if (shapeIsFilled && resetCounter >= 60) {
     resetGame();
     return;
-  }
+  }*/
   for (let i = particles.length - 1; i >= 0; i--) {
     if (dist(mouseX, mouseY, particles[i].pos.x, particles[i].pos.y) < particleSize / 2 && !particles[i].isStopped() && insideShape(particles[i].pos)) {
       particles[i].stopAndRecolor(shapeColor);

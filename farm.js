@@ -142,6 +142,7 @@ function setup() {
   if (seed > 0) {
     plantButton.mousePressed(() => {
       action = "plant";
+      selectSound.play();
     });
   } else {
     plantButton.mousePressed(() => {
@@ -151,6 +152,7 @@ function setup() {
   if (tools > 0) {
     harvestButton.mousePressed(() => {
       action = "harvest";
+      selectSound.play();
     });
   } else {
     harvestButton.mousePressed(() => {
@@ -160,6 +162,7 @@ function setup() {
   if (water > 0) {
     waterButton.mousePressed(() => {
       action = "water";
+      selectSound.play();
     });
   } else {
     waterButton.mousePressed(() => {
@@ -262,22 +265,24 @@ function mouseClicked() {
       currentPatch = patch;
       if (action === "plant" && seed > 0) {
         currentPatch.plantSeed();
+        plantSound.play();
         if (currentPatch.planted) {
           seed--;
           plantButtonText.html(seed);
         }
       } else if (action === "water" && water > 0) {
         currentPatch.water();
+        waterSound.play();
         if (currentPatch.watered) {
           water--;
           waterButtonText.html(water);
         }
       } else if (action === "harvest" && tools > 0) {
         if (currentPatch.grown) {
+          harvestSound.play();
           tools--;
           harvestButtonText.html(tools);
           score++;
-
           currentPatch.harvest();
         }
       }
@@ -369,6 +374,7 @@ class Patch {
 
   harvest() {
     if (this.grown) {
+      //Add a butterfly image here and let butterfly fly away.
       // Harvesting the crop
       this.planted = false;
       this.watered = false;

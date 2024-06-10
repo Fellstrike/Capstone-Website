@@ -128,7 +128,6 @@ function draw()
       locationNum = 5;
       prevLocation = locationNum;
       selectSound.play();
-      console.log("test");
     }
     logoImg.show();
   }
@@ -137,6 +136,11 @@ function draw()
   }
   if (locationNum == 1 || ((winMouseX >= imgWidth*0.225 && winMouseX <= imgWidth*0.32) && (winMouseY >= imgHeight*0.25 && winMouseY <= imgHeight*0.825)))
   {
+    if (!selectSound.isPlaying() && prevLocation != locationNum) {
+      locationNum = 1;
+      prevLocation = locationNum;
+      selectSound.play();
+    }
     treeImg.show();
   }
   else
@@ -145,6 +149,11 @@ function draw()
   }
   if (locationNum == 3 || ((winMouseX >= imgWidth * 0.72 && winMouseX <= imgWidth * 0.83) && (winMouseY >= imgHeight * 0.26 && winMouseY <= imgHeight * 0.49)))
   {
+    if (!selectSound.isPlaying() && prevLocation != locationNum) {
+      locationNum = 3;
+      prevLocation = locationNum;
+      selectSound.play();
+    }
     farmImg.show();
   }
   else
@@ -153,6 +162,11 @@ function draw()
   }
   if (locationNum == 2 || ((winMouseX >= imgWidth * 0.485 && winMouseX <= imgWidth * 0.585) && (winMouseY >= imgHeight * 0.25 && winMouseY <= imgHeight * 0.45)))
   {
+    if (!selectSound.isPlaying() && prevLocation != locationNum) {
+      locationNum = 2;
+      prevLocation = locationNum;
+      selectSound.play();
+    }
     waterImg.show();
   }
   else
@@ -161,6 +175,11 @@ function draw()
   }
   if (locationNum == 4 || ((winMouseX >= imgWidth * 0.645 && winMouseX <= imgWidth * 0.84) && (winMouseY >= imgHeight * 0.51 && winMouseY <= imgHeight * 0.82)))
   {
+    if (!selectSound.isPlaying() && prevLocation != locationNum) {
+      locationNum = 4;
+      prevLocation = locationNum;
+      selectSound.play();
+    }
     swarmImg.show();
   }
   else
@@ -217,13 +236,18 @@ function resetScores()
 function keyPressed() {
   if (keyCode === LEFT_ARROW) {
     locationNum--;
-    if (locationNum <= -1)
-      {locationNum = 5;}
+    if (locationNum < 1)
+      {
+        locationNum = 5;
+      }
   } else if (keyCode === RIGHT_ARROW) {
     locationNum++;
     if (locationNum > 5)
-      {locationNum = 0;}
-    console.log("location #:" + locationNum);
+      {
+        locationNum = 0;
+        prevLocation = locationNum;
+      }
+    //console.log("location #:" + locationNum);
   }
   else if (key === 'r')
   {
