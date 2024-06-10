@@ -32,6 +32,19 @@ let waterMap;
 let swarmMap;
 let logoImg;
 let eggLogo;
+let stream1;
+let stream2;
+let stream3;
+let picture1;
+let picture2;
+let picture3;
+let picture4;
+let picture5;
+let picture6;
+let picture7;
+let picture8;
+let pictureBlank;
+let streamBlank;
 
 let imgHeight;
 let imgWidth;
@@ -42,6 +55,7 @@ let resetButton;
 let locationNum = 0;
 
 let selectSound;
+let prevLocation;
 
 //need images for swarm, parth, and threshold
 
@@ -62,6 +76,8 @@ function preload() {
 
 function setup() 
 {
+  prevLocation = 0;
+  selectSound.play();
   imgWidth = windowWidth*1.1;
   imgHeight = windowHeight*1.1;
   createCanvas(windowWidth, windowHeight);
@@ -107,7 +123,13 @@ function setup()
 
 function draw() 
 {
-  if (location == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.22 && winMouseY <= imgHeight*0.27))){
+  if (locationNum == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.22 && winMouseY <= imgHeight*0.27))){
+    if (!selectSound.isPlaying() && prevLocation != locationNum) {
+      locationNum = 5;
+      prevLocation = locationNum;
+      selectSound.play();
+      console.log("test");
+    }
     logoImg.show();
   }
   else {
@@ -196,11 +218,12 @@ function keyPressed() {
   if (keyCode === LEFT_ARROW) {
     locationNum--;
     if (locationNum <= -1)
-      {locationNum = 4;}
+      {locationNum = 5;}
   } else if (keyCode === RIGHT_ARROW) {
     locationNum++;
-    if (locationNum > 4)
+    if (locationNum > 5)
       {locationNum = 0;}
+    console.log("location #:" + locationNum);
   }
   else if (key === 'r')
   {
