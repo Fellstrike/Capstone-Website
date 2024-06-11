@@ -139,15 +139,8 @@ function draw() {
     DuckCount.play();
   
   }
-<<<<<<< Updated upstream
 
   if (((keyIsPressed && key === ' ') || mouseIsPressed)&& CheckMove >= width*0.47 && CheckMove <= width*0.51 && !click && !Lose) { // Duck CLICK
-=======
-  if (Lose) {
-    
-  }
-  else if ((keyIsPressed && key === ' ' || mouseIsClicked) && CheckMove >= width*0.47 && CheckMove <= width*0.51 && !click && !Lose) { // Duck CLICK
->>>>>>> Stashed changes
     click = true;
     ClickNum += 1;
     DuckPress.play();
@@ -158,24 +151,7 @@ function draw() {
     RedText -= 20;
     mouseIsClicked = false;
   } 
-<<<<<<< Updated upstream
   else if (((keyIsPressed && key === ' ') || mouseIsPressed) && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
-=======
-  else if ((keyIsPressed && key === ' ' || mouseIsClicked) && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
-    DuckExplode = 1;
-    DuckBoom.play();
-    Lose = true;
-    image(explode, width / 2, height / 2, 1000, 1000);
-    Speed = 0;
-    Red = 250;
-    mouseIsClicked = false;
-  }
-
-  if (Lose) {
-    
-  }
-  else if (DuckTimer === 0 && !Lose) { // DUCK EXPLODE
->>>>>>> Stashed changes
     DuckExplode = 1;
     DuckBoom.play();
     Lose = true;
@@ -242,5 +218,4 @@ function resetGame()
   restartButton.hide();
   backButton.hide();
   DuckBoom.stop();
-
 }

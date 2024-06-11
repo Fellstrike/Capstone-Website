@@ -19,7 +19,7 @@ let bird;
 let backButton;
 let restartButton;
 let winSound;
-let hoveSound;
+let hoverSound;
 
 function setup() {
   canvasHeight = windowHeight*0.9;
@@ -42,12 +42,9 @@ function setup() {
   restartButton.position(width * 0.55, height*0.65);
   restartButton.hide();
   restartButton.mouseClicked(resetGame);
-<<<<<<< Updated upstream
-  let winSound = loadSound('sounds/WinGame.wav');
-  let hoveSound = loadSound('sounds/HoverSound.wav');
-=======
+  winSound = loadSound('sounds/WinGame.wav');
+  hoverSound = loadSound('sounds/HoverSound.wav');
   bird = loadImage('Bird/GreyBirdAnim.gif');
->>>>>>> Stashed changes
 }
 
 function draw() {
@@ -64,7 +61,6 @@ function draw() {
 
   // Update and display particles
   for (let i = particles.length - 1; i >= 0; i--) {
-    hoveSound.play();
     particles[i].update();
     particles[i].display();
     particles[i].constrain();
@@ -73,6 +69,9 @@ function draw() {
   // Check if the shape is filled
   if (coveredArea / totalArea >= threshold) {
     shapeIsFilled = true;
+    if (!winSound.isPlaying()) {
+      winSound.play();
+    }
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(24);
@@ -154,6 +153,7 @@ function mouseClicked() {
   }*/
   for (let i = particles.length - 1; i >= 0; i--) {
     if (dist(mouseX, mouseY, particles[i].pos.x, particles[i].pos.y) < particleSize / 2 && !particles[i].isStopped() && insideShape(particles[i].pos)) {
+      hoverSound.play();
       particles[i].stopAndRecolor(shapeColor);
       particles[i].moveAwayFromOtherParticles(i);
       coveredArea += sq(particleSize/3);

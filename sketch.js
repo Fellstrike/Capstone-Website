@@ -30,7 +30,6 @@ let treeMap;
 let farmMap;
 let waterMap;
 let swarmMap;
-<<<<<<< Updated upstream
 let logoImg;
 let eggLogo;
 let stream1;
@@ -46,13 +45,11 @@ let picture7;
 let picture8;
 let pictureBlank;
 let streamBlank;
-=======
 let artEasel; 
 let pic01;
 let pic02;
 let pic03;
 let thirdThing;
->>>>>>> Stashed changes
 
 let imgHeight;
 let imgWidth;
@@ -77,43 +74,26 @@ function preload() {
   farmMap = loadImage('grayfarmicon.png');
   waterMap = loadImage('duck/WaterIcon.png');
   swarmMap = loadImage('oldSwarmIcon.png');
-<<<<<<< Updated upstream
   selectSound = loadSound('sounds/select.wav');
   logoImg = createImg('OldFashionedLogoColor.png');
   eggLogo = loadImage('easterEggLogo.png');
-=======
   artEasel = loadImage('arteasel.png');
   pic01 = loadImage('picture1.jpg');
   pic02 = loadImage('picture2.jpg');
   pic03 = loadImage('picture3.jpg');
   thirdThing = loadImage('TheThirdThing.png');
->>>>>>> Stashed changes
 }
 
 function setup() 
 {
-<<<<<<< Updated upstream
   prevLocation = 0;
-  selectSound.play();
-  imgWidth = windowWidth*1.1;
-  imgHeight = windowHeight*1.1;
-  createCanvas(windowWidth, windowHeight);
-  image(bgImg, 0, 35, imgWidth, imgHeight);
-  image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
-  image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
-  image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
-  image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
-  image(eggLogo, imgWidth*0.595, imgHeight*0.22, imgWidth*0.025, imgWidth*0.025);
-  logoImg.size(imgWidth*0.025, imgWidth*0.025);
-  logoImg.position(imgWidth*0.595, imgHeight*0.22);
-  logoImg.mouseClicked(secret1);
-  logoImg.hide();
-=======
   createCanvas(windowWidth, windowHeight);
   imgWidth = width*1;
   imgHeight = height*1;
-  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+
   image(bgImg, 0, height*0.095, imgWidth, imgHeight);
+
+  //The Easels can be where we display cameras of pictures and clicking there will bring up the feeds.
   image(artEasel, imgWidth*0.17, imgHeight*0.55, imgWidth*0.07, imgHeight*0.07);
   image(pic01, imgWidth*0.1968, imgHeight*0.5685, imgWidth*0.0187, imgHeight*0.0215);
   image(artEasel, imgWidth*0.592, imgHeight*0.62, imgWidth*0.07, imgHeight*0.07);
@@ -122,23 +102,23 @@ function setup()
   image(pic02, imgWidth*0.458, imgHeight*0.369, imgWidth*0.01875, imgHeight*0.0216);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
   image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  //End Easel Placement
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
-
->>>>>>> Stashed changes
+  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+  image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
+  logoImg.size(imgWidth*0.025, imgWidth*0.025);
+  logoImg.position(imgWidth*0.595, imgHeight*0.28);
+  logoImg.hide();
+  logoImg.mouseClicked(secret1);
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
   treeImg.position(imgWidth*0.15, imgHeight*0.31);
   treeImg.hide();
   treeImg.mouseClicked(treeUrl);
-<<<<<<< Updated upstream
-  farmImg.size(width*0.2, width*0.2);
-  farmImg.position(imgWidth*0.684, imgHeight*0.19);
-=======
   farmImg.size(imgWidth*0.1, imgWidth*0.1);
   farmImg.position(imgWidth*0.75, imgHeight*0.26);
->>>>>>> Stashed changes
   farmImg.mouseClicked(farmUrl);
   farmImg.hide();
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
@@ -168,8 +148,7 @@ function setup()
 
 function draw() 
 {
-<<<<<<< Updated upstream
-  if (locationNum == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.22 && winMouseY <= imgHeight*0.27))){
+  if (locationNum == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.28 && winMouseY <= imgHeight*0.33))){
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
       locationNum = 5;
       prevLocation = locationNum;
@@ -180,10 +159,7 @@ function draw()
   else {
     logoImg.hide();
   }
-  if (locationNum == 1 || ((winMouseX >= imgWidth*0.225 && winMouseX <= imgWidth*0.32) && (winMouseY >= imgHeight*0.25 && winMouseY <= imgHeight*0.825)))
-=======
   if (locationNum == 1 || ((winMouseX >= imgWidth*0.225 && winMouseX <= imgWidth*0.32) && (winMouseY >= imgHeight*0.31 && winMouseY <= imgHeight*0.885)))
->>>>>>> Stashed changes
   {
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
       locationNum = 1;
@@ -196,11 +172,7 @@ function draw()
   {
     treeImg.hide();
   }
-<<<<<<< Updated upstream
-  if (locationNum == 3 || ((winMouseX >= imgWidth * 0.72 && winMouseX <= imgWidth * 0.83) && (winMouseY >= imgHeight * 0.26 && winMouseY <= imgHeight * 0.49)))
-=======
   if (locationNum == 3 || ((winMouseX >= imgWidth * 0.77 && winMouseX <= imgWidth * 0.83) && (winMouseY >= imgHeight * 0.295 && winMouseY <= imgHeight * 0.425)))
->>>>>>> Stashed changes
   {
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
       locationNum = 3;
@@ -255,35 +227,55 @@ function resetScores()
   savedData.Patches = [];
   savedData.Score = score;
   localStorage.setItem('thirdThingData', JSON.stringify(savedData)); //saves data
-  imgWidth = windowWidth*1.1;
-  imgHeight = windowHeight*1.1;
+  prevLocation = 0;
   createCanvas(windowWidth, windowHeight);
-  image(bgImg, 0, 35, imgWidth, imgHeight);
-  image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
-  image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
-  image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
-  image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
+  imgWidth = width*1;
+  imgHeight = height*1;
+
+  image(bgImg, 0, height*0.095, imgWidth, imgHeight);
+  image(artEasel, imgWidth*0.17, imgHeight*0.55, imgWidth*0.07, imgHeight*0.07);
+  image(pic01, imgWidth*0.1968, imgHeight*0.5685, imgWidth*0.0187, imgHeight*0.0215);
+  image(artEasel, imgWidth*0.592, imgHeight*0.62, imgWidth*0.07, imgHeight*0.07);
+  image(pic03, imgWidth*0.6186, imgHeight*0.6384, imgWidth*0.01875, imgHeight*0.0216);
+  image(artEasel, imgWidth*0.432, imgHeight*0.35, imgWidth*0.07, imgHeight*0.07);
+  image(pic02, imgWidth*0.458, imgHeight*0.369, imgWidth*0.01875, imgHeight*0.0216);
+  image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
+  image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
+  image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
+  image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
+  image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
+  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+  image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
+  logoImg.size(imgWidth*0.025, imgWidth*0.025);
+  logoImg.position(imgWidth*0.595, imgHeight*0.28);
+  logoImg.hide();
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
-  treeImg.position(imgWidth*0.15, imgHeight*0.25);
+  treeImg.position(imgWidth*0.15, imgHeight*0.31);
   treeImg.hide();
-  farmImg.size(width*0.2, width*0.2);
-  farmImg.position(imgWidth*0.684, imgHeight*0.19);
+  farmImg.size(imgWidth*0.1, imgWidth*0.1);
+  farmImg.position(imgWidth*0.75, imgHeight*0.26);
   farmImg.hide();
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
-  waterImg.position(imgWidth*0.49, imgHeight*0.265);
+  waterImg.position(imgWidth*0.49, imgHeight*0.305);
   waterImg.hide();
   swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.645, imgHeight*0.51);
+  swarmImg.position(imgWidth*0.645, imgHeight*0.56);
   swarmImg.hide();
 
+  fill(125);
+  rect(imgWidth*0.01, imgHeight*0.334, imgWidth*0.11, imgHeight*0.5);
+  fill(0);
   textSize(imgWidth*0.02);
-  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.16, imgHeight*0.1);
-  text('Seeds:' + acornNum, imgWidth*0.21, imgHeight*0.2);
-  text('Water:' + water, imgWidth*0.345, imgHeight * 0.2);
-  text('Tools:' + tools, imgWidth*0.48, imgHeight*0.2);
-  text('Score:' + score, imgWidth*0.615, imgHeight * 0.2);
-  resetButton.size(imgWidth*0.075, imgHeight*0.05);
-  resetButton.position(imgWidth*0.79, imgHeight*0.155);
+  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.164, imgHeight*0.98);
+  text('Seeds:' + acornNum, imgWidth*0.03, imgHeight*0.4);
+  text('Water:' + water, imgWidth*0.03, imgHeight * 0.5);
+  text('Tools:' + tools, imgWidth*0.03, imgHeight*0.6);
+  text('Score:' + score, imgWidth*0.03, imgHeight * 0.7);
+
+  resetButton.style('font-size', imgWidth*0.022 + 'px');
+  resetButton.size(imgWidth*0.08, imgHeight*0.05);
+  resetButton.position(imgWidth*0.025, imgHeight*0.75);
 }
 
 function keyPressed() {
@@ -360,33 +352,53 @@ function swarmUrl()
 
 function windowResized()
 {
-  imgWidth = windowWidth*1.1;
-  imgHeight = windowHeight*1.1;
+  prevLocation = 0;
   createCanvas(windowWidth, windowHeight);
-  image(bgImg, 0, 35, imgWidth, imgHeight);
-  image(treeMap, imgWidth*0.15, imgHeight*0.25, imgWidth*0.23, imgHeight*0.57);
-  image(farmMap, imgWidth*0.684, imgHeight*0.19, width*0.2, width*0.2);
-  image(waterMap, imgWidth*0.485, imgHeight*0.255, imgWidth*0.1, imgHeight*0.2);
-  image(swarmMap, imgWidth*0.645, imgHeight*0.51, imgWidth*0.2, imgHeight*0.31);
+  imgWidth = width*1;
+  imgHeight = height*1;
+
+  image(bgImg, 0, height*0.095, imgWidth, imgHeight);
+  image(artEasel, imgWidth*0.17, imgHeight*0.55, imgWidth*0.07, imgHeight*0.07);
+  image(pic01, imgWidth*0.1968, imgHeight*0.5685, imgWidth*0.0187, imgHeight*0.0215);
+  image(artEasel, imgWidth*0.592, imgHeight*0.62, imgWidth*0.07, imgHeight*0.07);
+  image(pic03, imgWidth*0.6186, imgHeight*0.6384, imgWidth*0.01875, imgHeight*0.0216);
+  image(artEasel, imgWidth*0.432, imgHeight*0.35, imgWidth*0.07, imgHeight*0.07);
+  image(pic02, imgWidth*0.458, imgHeight*0.369, imgWidth*0.01875, imgHeight*0.0216);
+  image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
+  image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
+  image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
+  image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
+  image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
+  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+  image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
+  logoImg.size(imgWidth*0.025, imgWidth*0.025);
+  logoImg.position(imgWidth*0.595, imgHeight*0.28);
+  logoImg.hide();
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
-  treeImg.position(imgWidth*0.15, imgHeight*0.25);
+  treeImg.position(imgWidth*0.15, imgHeight*0.31);
   treeImg.hide();
-  farmImg.size(width*0.2, width*0.2);
-  farmImg.position(imgWidth*0.684, imgHeight*0.19);
+  farmImg.size(imgWidth*0.1, imgWidth*0.1);
+  farmImg.position(imgWidth*0.75, imgHeight*0.26);
   farmImg.hide();
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
-  waterImg.position(imgWidth*0.49, imgHeight*0.265);
+  waterImg.position(imgWidth*0.49, imgHeight*0.305);
   waterImg.hide();
   swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.645, imgHeight*0.51);
+  swarmImg.position(imgWidth*0.645, imgHeight*0.56);
   swarmImg.hide();
 
+  fill(125);
+  rect(imgWidth*0.01, imgHeight*0.334, imgWidth*0.11, imgHeight*0.5);
+  fill(0);
   textSize(imgWidth*0.02);
-  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.16, imgHeight*0.1);
-  text('Seeds:' + acornNum, imgWidth*0.21, imgHeight*0.2);
-  text('Water:' + water, imgWidth*0.345, imgHeight * 0.2);
-  text('Tools:' + tools, imgWidth*0.48, imgHeight*0.2);
-  text('Score:' + score, imgWidth*0.615, imgHeight * 0.2);
-  resetButton.size(imgWidth*0.075, imgHeight*0.05);
-  resetButton.position(imgWidth*0.79, imgHeight*0.155);
+  text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.164, imgHeight*0.98);
+  text('Seeds:' + acornNum, imgWidth*0.03, imgHeight*0.4);
+  text('Water:' + water, imgWidth*0.03, imgHeight * 0.5);
+  text('Tools:' + tools, imgWidth*0.03, imgHeight*0.6);
+  text('Score:' + score, imgWidth*0.03, imgHeight * 0.7);
+
+  resetButton.style('font-size', imgWidth*0.022 + 'px');
+  resetButton.size(imgWidth*0.08, imgHeight*0.05);
+  resetButton.position(imgWidth*0.025, imgHeight*0.75);
 }
