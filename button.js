@@ -40,8 +40,10 @@ let rotationSpeed = 0.1;
 let backButton;
 let restartButton;
 
+let mouseIsClicked = false;
+
 function preload() {
-  duck = loadImage("duck/rubberduck.png");
+  duck = loadImage("duck/TntDuck.png");
   explode = loadImage("duck/explosion.png");
   DuckClick = loadSound("duck/DuckClick.wav");
   DuckCount = loadSound("duck/DuckCount.wav");
@@ -75,7 +77,7 @@ function draw() {
   background(0, 0, 255);
   imageMode(CENTER);
 
-  if (Lose && ClickNum < 10) {
+  if (Lose && ClickNum < 5) {
     image(explode, width / 2, height / 2, 1000, 1000);
     fill(80, 40, 0);
     text("Game Over", width * 0.19, height / 1.2);
@@ -135,9 +137,17 @@ function draw() {
     DuckTimer -= 1;
     RedText += 20;
     DuckCount.play();
+  
   }
+<<<<<<< Updated upstream
 
   if (((keyIsPressed && key === ' ') || mouseIsPressed)&& CheckMove >= width*0.47 && CheckMove <= width*0.51 && !click && !Lose) { // Duck CLICK
+=======
+  if (Lose) {
+    
+  }
+  else if ((keyIsPressed && key === ' ' || mouseIsClicked) && CheckMove >= width*0.47 && CheckMove <= width*0.51 && !click && !Lose) { // Duck CLICK
+>>>>>>> Stashed changes
     click = true;
     ClickNum += 1;
     DuckPress.play();
@@ -146,8 +156,26 @@ function draw() {
     Speed += width*0.0002;
     DuckTimer += 1;
     RedText -= 20;
+    mouseIsClicked = false;
   } 
+<<<<<<< Updated upstream
   else if (((keyIsPressed && key === ' ') || mouseIsPressed) && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
+=======
+  else if ((keyIsPressed && key === ' ' || mouseIsClicked) && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
+    DuckExplode = 1;
+    DuckBoom.play();
+    Lose = true;
+    image(explode, width / 2, height / 2, 1000, 1000);
+    Speed = 0;
+    Red = 250;
+    mouseIsClicked = false;
+  }
+
+  if (Lose) {
+    
+  }
+  else if (DuckTimer === 0 && !Lose) { // DUCK EXPLODE
+>>>>>>> Stashed changes
     DuckExplode = 1;
     DuckBoom.play();
     Lose = true;
@@ -156,16 +184,10 @@ function draw() {
     Red = 250;
   }
 
-  if (DuckTimer === 0 && !Lose) { // DUCK EXPLODE
-    DuckExplode = 1;
-    DuckBoom.play();
-    Lose = true;
-    image(explode, width / 2, height / 2, 1000, 1000);
-    Speed = 0;
-    Red = 250;
+  if (Lose) {
+    
   }
-
-  if (click && !Lose) { // DUCK ROTATE/GROW
+  else if (click && !Lose) { // DUCK ROTATE/GROW
     t++;
     Size += SizeAdd;
     if (ClickNum >= 5)
@@ -183,6 +205,10 @@ function draw() {
       ShakeY = height / 2;
     }
   }
+}
+
+function mouseClicked() {
+  mouseIsClicked = true;
 }
 
 function gameWon()

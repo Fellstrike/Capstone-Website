@@ -6,7 +6,7 @@ let shapeIsFilled = false;
 let saveScore = false;
 let coveredArea = 0;
 let totalArea = 0;
-let threshold = 0.9; // Adjust threshold here
+let threshold = 1; // Adjust threshold here
 let canvasWidth = 1200; // Adjust canvas width here
 let canvasHeight = 900; // Adjust canvas height here
 let particleSize = 100; // Adjust particle size here
@@ -14,6 +14,7 @@ let shapeSize;
 let shapeColor;
 let resetCounter = 0;
 let tool = savedData.Tools;
+let bird;
 
 let backButton;
 let restartButton;
@@ -24,7 +25,7 @@ function setup() {
   canvasHeight = windowHeight*0.9;
   canvasWidth = windowWidth*0.9;
   createCanvas(canvasWidth, canvasHeight);
-  particleSize = floor(min(width, height) / 3.75); // Adjust particle size based on canvas size
+  particleSize = floor(min(width, height) / 2); // Adjust particle size based on canvas size
   shapeSize = floor(min(width, height) / 2); // Adjust shape size based on canvas size
   generateShape();
   calculateTotalArea();
@@ -41,8 +42,12 @@ function setup() {
   restartButton.position(width * 0.55, height*0.65);
   restartButton.hide();
   restartButton.mouseClicked(resetGame);
+<<<<<<< Updated upstream
   let winSound = loadSound('sounds/WinGame.wav');
   let hoveSound = loadSound('sounds/HoverSound.wav');
+=======
+  bird = loadImage('Bird/GreyBirdAnim.gif');
+>>>>>>> Stashed changes
 }
 
 function draw() {
@@ -151,7 +156,7 @@ function mouseClicked() {
     if (dist(mouseX, mouseY, particles[i].pos.x, particles[i].pos.y) < particleSize / 2 && !particles[i].isStopped() && insideShape(particles[i].pos)) {
       particles[i].stopAndRecolor(shapeColor);
       particles[i].moveAwayFromOtherParticles(i);
-      coveredArea += sq(particleSize / 1.5);
+      coveredArea += sq(particleSize/3);
       //print("% covered" + coveredArea/totalArea);
       break;
     }
@@ -194,9 +199,21 @@ class Particle {
   }
 
   display() {
+    push();
     noStroke();
-    fill(this.colour.x, this.colour.y, this.colour.z);
-    ellipse(this.pos.x, this.pos.y, particleSize, particleSize);
+    //fill(this.colour.x, this.colour.y, this.colour.z);
+    //ellipse(this.pos.x, this.pos.y, particleSize, particleSize);
+    imageMode(CENTER);
+    if (this.vel.x > 0){
+      tint(this.colour.x, this.colour.y, this.colour.z);
+      image(bird, this.pos.x, this.pos.y, particleSize, particleSize);
+    }
+    else {
+      scale(-1, 1);
+      tint(this.colour.x, this.colour.y, this.colour.z);
+      image(bird, -this.pos.x, this.pos.y, -particleSize, particleSize);
+    }
+    pop();
   }
 
   isStopped() {
@@ -210,7 +227,7 @@ class Particle {
   }
 
   moveAwayFromOtherParticles(pNum) {
-    let minDist = particleSize*0.75;
+    let minDist = particleSize*0.3;
     let newPos = this.pos;
     let moved = true;
     while (moved)
@@ -218,12 +235,14 @@ class Particle {
       for (let i = 0; i < particles.length; i++) {
         if (particles[i].isStopped() && i != pNum) {
           let d = newPos.dist(particles[i].pos);
-          while (d < minDist) {
-            minDist = d;
+          while (d < minDist && insideShape(newPos)) {
             newPos.x += random(-minDist, minDist);
             newPos.y += random(-minDist, minDist);
             moved = true;
             d = newPos.dist(particles[i].pos);
+          }
+          if (!insideShape(newPos)) {
+            newPos.lerp(this.pos, 0.4);
           }
         }
         else{
