@@ -56,15 +56,15 @@ function preload() {
 function setup() {
   print(savedData.Patches);
   createCanvas(windowWidth, windowHeight);
-  imgSize = min(width, height);
-  image(farmLand, width-imgSize*1.25, height-imgSize, imgSize, imgSize);
+  imgSize = min(width*0.6, height);
+  image(farmLand, width-imgSize, height-imgSize, imgSize, imgSize);
    // Creating patches of dirt
    let spacingX = imgSize/(rows+1);
    let spacingY = imgSize/(cols+1);
    if (patches.length === 0) {
      for (let i = 0; i < rows; i++) {
        for (let j = 0; j < cols; j++) {
-         patches.push(new Patch(j * spacingX*1.25 + width-imgSize-spacingX*0.25, i * spacingY*1.25+spacingY*0.75, spacingX, spacingY));
+         patches.push(new Patch(j * spacingX+width-imgSize+spacingX, i * spacingY+height-imgSize + spacingY, spacingX, spacingY));
          if (savedData.Patches[i+j]){
            patches[i+j].planted = savedData.Patches[i+j].planted;
            patches[i+j].watered = savedData.Patches[i+j].watered;
@@ -75,10 +75,10 @@ function setup() {
      }
    }
 
-   textboxX = width * 0.01;
+   textboxX = width*0.05;
    textboxY = height * 0.25;
-   textboxWidth = width * 0.4;
-   textboxHeight = height * 0.5;
+   textboxWidth = imgSize*0.5;
+   textboxHeight = imgSize*0.5;
 
    
   textContent = 
@@ -94,14 +94,14 @@ function setup() {
   backButton = createButton('Back to Gallery');
   backButton.style('font-size', 30 + 'px');
   backButton.size(250, 50);
-  backButton.position(width * 0.14, height * 0.65);
+  backButton.position(width * 0.1, height * 0.75);
   backButton.mouseClicked(toMain);
 
   // Create a div for the plant button
   plantButton = createDiv('');
   plantButton.style('display', 'flex');
   plantButton.style('align-items', 'center');
-  plantButton.position(width*0.05, height*0.01);
+  plantButton.position(width*0.05, height*0.1);
   
   // Add the seed image to the plant button div
   seedImg.size(50, 50); // Adjust size as needed
@@ -116,7 +116,7 @@ function setup() {
   waterButton = createDiv('');
   waterButton.style('display', 'flex');
   waterButton.style('align-items', 'center');
-  waterButton.position(width*0.11, height*0.01);
+  waterButton.position(width*0.15, height*0.1);
 
   waterImg.size(50, 50);
   waterImg.parent(waterButton);
@@ -129,7 +129,7 @@ function setup() {
   harvestButton = createDiv('');
   harvestButton.style('display', 'flex');
   harvestButton.style('align-items', 'center');
-  harvestButton.position(width*0.17, height*0.01);
+  harvestButton.position(width*0.25, height*0.1);
 
   harvestImg.size(50,50);
   harvestImg.parent(harvestButton);
@@ -166,7 +166,7 @@ function setup() {
     });
   } else {
     waterButton.mousePressed(() => {
-      buttonUrl();
+      duckUrl();
     });
   }
 }
@@ -175,7 +175,7 @@ function treeUrl() {
   window.location.assign('tree.html');
 }
 
-function buttonUrl() {
+function duckUrl() {
   window.location.assign('button.html');
 }
 
@@ -185,7 +185,7 @@ function swarmUrl() {
 
 function draw() {
   background(255);
-  image(farmLand, width-imgSize*1.25, height-imgSize, imgSize, imgSize);
+  image(farmLand, width-imgSize, height-imgSize, imgSize, imgSize);
  
   // Textbox with wrapping text
   fill(0); // Set text color to black
@@ -229,7 +229,7 @@ function draw() {
 
   noStroke();
   textSize(width*0.035);
-  text(currentAction, width*0.3, height*0.01);
+  text(currentAction, width*0.4, height*0.11);
 
   if (seed == 0 && water == 0 && tools == 0) {
     action = 'None';

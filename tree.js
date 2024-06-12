@@ -135,6 +135,33 @@ function draw() {
   player.update();
 }
 
+function mousePressed(){
+  if (mouseX > player.x) {
+    player.move(1);
+  }
+  else if (mouseX < player.x) {
+    player.move(-1);
+  }
+}
+
+function mouseReleased() {
+  player.stop();
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    player.move(-1);
+  } else if (keyCode === RIGHT_ARROW) {
+    player.move(1);
+  }
+}
+
+function keyReleased() {
+  if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+    player.stop();
+  }
+}
+
 function gameOver()
 {
   textSize(width/20);
@@ -281,20 +308,6 @@ class Obstacle {
       player.y < this.y + this.height &&
       player.y > this.y
     );
-  }
-}
-
-function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    player.move(-1);
-  } else if (keyCode === RIGHT_ARROW) {
-    player.move(1);
-  }
-}
-
-function keyReleased() {
-  if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-    player.stop();
   }
 }
 

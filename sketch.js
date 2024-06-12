@@ -124,7 +124,7 @@ function setup()
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
   waterImg.position(imgWidth*0.49, imgHeight*0.305);
   waterImg.hide();
-  waterImg.mouseClicked(buttonUrl);
+  waterImg.mouseClicked(duckUrl);
   swarmImg.size(imgWidth*0.2, imgHeight*0.31);
   swarmImg.position(imgWidth*0.645, imgHeight*0.56);
   swarmImg.hide();
@@ -149,8 +149,8 @@ function setup()
 function draw() 
 {
   if (locationNum == 5 || ((winMouseX >= imgWidth*0.595 && winMouseX <= imgWidth*0.62) && (winMouseY >= imgHeight*0.28 && winMouseY <= imgHeight*0.33))){
+    locationNum = 5;
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
-      locationNum = 5;
       prevLocation = locationNum;
       selectSound.play();
     }
@@ -161,8 +161,8 @@ function draw()
   }
   if (locationNum == 1 || ((winMouseX >= imgWidth*0.225 && winMouseX <= imgWidth*0.32) && (winMouseY >= imgHeight*0.31 && winMouseY <= imgHeight*0.885)))
   {
+    locationNum = 1;
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
-      locationNum = 1;
       prevLocation = locationNum;
       selectSound.play();
     }
@@ -174,8 +174,8 @@ function draw()
   }
   if (locationNum == 3 || ((winMouseX >= imgWidth * 0.77 && winMouseX <= imgWidth * 0.83) && (winMouseY >= imgHeight * 0.295 && winMouseY <= imgHeight * 0.425)))
   {
+    locationNum = 3;
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
-      locationNum = 3;
       prevLocation = locationNum;
       selectSound.play();
     }
@@ -187,8 +187,8 @@ function draw()
   }
   if (locationNum == 2 || ((winMouseX >= imgWidth * 0.485 && winMouseX <= imgWidth * 0.585) && (winMouseY >= imgHeight * 0.305 && winMouseY <= imgHeight * 0.505)))
   {
+    locationNum = 2;
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
-      locationNum = 2;
       prevLocation = locationNum;
       selectSound.play();
     }
@@ -200,8 +200,8 @@ function draw()
   }
   if (locationNum == 4 || ((winMouseX >= imgWidth * 0.645 && winMouseX <= imgWidth * 0.84) && (winMouseY >= imgHeight * 0.56 && winMouseY <= imgHeight * 0.87)))
   {
+    locationNum = 4;
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
-      locationNum = 4;
       prevLocation = locationNum;
       selectSound.play();
     }
@@ -283,7 +283,7 @@ function keyPressed() {
     locationNum--;
     if (locationNum < 1)
       {
-        locationNum = 5;
+        locationNum = 6;
       }
   } else if (keyCode === RIGHT_ARROW) {
     locationNum++;
@@ -307,13 +307,19 @@ function keyPressed() {
         treeUrl();
         break;
       case 2:
-        buttonUrl();
+        duckUrl();
         break;
       case 3:
         farmUrl();
         break;
       case 4:
         swarmUrl();
+        break;
+      case 5:
+        secret1();
+        break;
+      case 6:
+        story1();
         break;
       default:
         break;
@@ -332,16 +338,20 @@ function secret1()
   window.location.assign('secret1.html');
 }
 
+function story1()
+{
+  window.location.assign('story1/index.html');
+}
 function farmUrl()
 {
  // print("Put the url for the FARM stuff here.");
   window.location.assign('farm.html');
 }
 
-function buttonUrl()
+function duckUrl()
 {
  // print("Ditto for Button stuff");
-  window.location.assign('button.html');
+  window.location.assign('duck.html');
 }
 
 function swarmUrl()
