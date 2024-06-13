@@ -81,6 +81,7 @@ function preload() {
   pic01 = createImg('picture1.jpg');
   pic02 = createImg('picture2.jpg');
   pic03 = createImg('picture3.jpg');
+  pic04 = createImg('destruction.png');
   thirdThing = createImg('TheThirdThing.png');
 }
 
@@ -110,7 +111,10 @@ function setup()
   pic02.mouseClicked(secret2);
   pic02.mouseOver(zoom2);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
-  //image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  pic04.position(imgWidth*0.747, imgHeight*0.3285); 
+  pic04.size(imgWidth*0.0187, imgHeight*0.0215);
+  pic04.mouseOver(zoom4);
+  pic04.mouseClicked(secret4);
   //End Easel Placement
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
@@ -152,8 +156,8 @@ function setup()
   text('Score:' + score, imgWidth*0.03, imgHeight * 0.7);
   resetButton = createButton('Reset');
   resetButton.style('font-size', imgWidth*0.022 + 'px');
-  resetButton.size(imgWidth*0.08, imgHeight*0.05);
-  resetButton.position(imgWidth*0.025, imgHeight*0.75);
+  resetButton.size(imgWidth*0.09, imgHeight*0.06);
+  resetButton.position(imgWidth*0.02, imgHeight*0.74);
   resetButton.mouseClicked(resetScores);
 }
 
@@ -260,12 +264,14 @@ function resetScores()
   pic02.mouseClicked(secret2);
   pic02.mouseOver(zoom2);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
-  //image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  pic04.position(imgWidth*0.747, imgHeight*0.3285); 
+  pic04.size(imgWidth*0.0187, imgHeight*0.0215);
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
-  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+  thirdThing.position(width*0.15, -imgHeight*0.0065); 
+  thirdThing.size(imgWidth*0.7, imgHeight*0.29);
   image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
   logoImg.size(imgWidth*0.025, imgWidth*0.025);
   logoImg.position(imgWidth*0.595, imgHeight*0.28);
@@ -294,8 +300,8 @@ function resetScores()
   text('Score:' + score, imgWidth*0.03, imgHeight * 0.7);
 
   resetButton.style('font-size', imgWidth*0.022 + 'px');
-  resetButton.size(imgWidth*0.08, imgHeight*0.05);
-  resetButton.position(imgWidth*0.025, imgHeight*0.75);
+  resetButton.size(imgWidth*0.09, imgHeight*0.06);
+  resetButton.position(imgWidth*0.02, imgHeight*0.74);
 }
 
 function keyPressed() {
@@ -359,15 +365,20 @@ function treeUrl()
 
 function secret1()
 {
-  window.location.assign('secret1.html');
+  window.location.assign('secret4.html');
 }
 
 function secret2()
 {
-  window.location.assign('secret1.html');
+  window.location.assign('secret2.html');
 }
 
 function secret3()
+{
+  window.location.assign('secret3.html');
+}
+
+function secret4()
 {
   window.location.assign('secret1.html');
 }
@@ -406,27 +417,30 @@ function swarmUrl()
 }
 
 function zoom1() {
-  console.log("test");
   pic01.size(imgWidth*0.24, imgHeight*0.35);
   pic01.mouseOut(picReset);
 }
 
 function zoom2() {
-  console.log("test");
   pic02.size(imgWidth*0.24, imgHeight*0.35);
   pic02.mouseOut(picReset);
 }
 
 function zoom3() {
-  console.log("test");
   pic03.size(imgWidth*0.24, imgHeight*0.35);
   pic03.mouseOut(picReset);
+}
+
+function zoom4() {
+  pic04.size(imgWidth*0.24, imgHeight*0.35);
+  pic04.mouseOut(picReset);
 }
 
 function picReset() {
   pic01.size(imgWidth*0.01875, imgHeight*0.0216);
   pic02.size(imgWidth*0.01875, imgHeight*0.0216);
   pic03.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic04.size(imgWidth*0.01875, imgHeight*0.0216);
 }
 
 function windowResized()
@@ -453,12 +467,14 @@ function windowResized()
   pic02.mouseClicked(secret2);
   pic02.mouseOver(zoom2);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
-  //image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  pic04.position(imgWidth*0.747, imgHeight*0.3285); 
+  pic04.size(imgWidth*0.0187, imgHeight*0.0215);
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
-  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+  thirdThing.position(width*0.15, -imgHeight*0.0065); 
+  thirdThing.size(imgWidth*0.7, imgHeight*0.29);
   image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
   logoImg.size(imgWidth*0.025, imgWidth*0.025);
   logoImg.position(imgWidth*0.595, imgHeight*0.28);
@@ -482,11 +498,11 @@ function windowResized()
   textSize(imgWidth*0.02);
   text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.164, imgHeight*0.98);
   text('Seeds:' + acornNum, imgWidth*0.03, imgHeight*0.4);
-  text('Water:' + water, imgWidth*0.03, imgHeight * 0.5);
+  text('ater:' + water, imgWidth*0.03, imgHeight * 0.5);
   text('Tools:' + tools, imgWidth*0.03, imgHeight*0.6);
   text('Score:' + score, imgWidth*0.03, imgHeight * 0.7);
 
   resetButton.style('font-size', imgWidth*0.022 + 'px');
-  resetButton.size(imgWidth*0.08, imgHeight*0.05);
-  resetButton.position(imgWidth*0.025, imgHeight*0.75);
+  resetButton.size(imgWidth*0.09, imgHeight*0.06);
+  resetButton.position(imgWidth*0.02, imgHeight*0.74);
 }
