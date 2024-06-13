@@ -81,7 +81,7 @@ function preload() {
   pic01 = createImg('picture1.jpg');
   pic02 = createImg('picture2.jpg');
   pic03 = createImg('picture3.jpg');
-  thirdThing = loadImage('TheThirdThing.png');
+  thirdThing = createImg('TheThirdThing.png');
 }
 
 function setup() 
@@ -116,7 +116,9 @@ function setup()
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
   image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
-  image(thirdThing, width*0.15, -imgHeight*0.0065, imgWidth*0.7, imgHeight*0.29);
+  thirdThing.position(width*0.15, -imgHeight*0.0065); 
+  thirdThing.size(imgWidth*0.7, imgHeight*0.29);
+  thirdThing.mouseClicked(poster);
   image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
   logoImg.size(imgWidth*0.025, imgWidth*0.025);
   logoImg.position(imgWidth*0.595, imgHeight*0.28);
@@ -343,6 +345,10 @@ function keyPressed() {
         break;
     }
   }
+}
+
+function poster() {
+  window.location.assign('poster.html');
 }
 
 function treeUrl()
