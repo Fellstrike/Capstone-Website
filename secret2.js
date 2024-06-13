@@ -8,7 +8,7 @@
     createCanvas(windowWidth, windowHeight);
     
     // Create the iframe with dynamic width and height
-    myVideo = createDiv('<iframe src="https://player.twitch.tv/rigosuavve>&parent=p5c2024.netlify.app" height="600" width="800" allowfullscreen></iframe>');
+    text("Go to: https://m.twitch.tv/rigosuavve for the livestream!", width*0.5, height*0.5);
     
     // Position and size the video initially
    // resizeVideo();
