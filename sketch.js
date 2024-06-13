@@ -78,9 +78,9 @@ function preload() {
   logoImg = createImg('OldFashionedLogoColor.png');
   eggLogo = loadImage('easterEggLogo.png');
   artEasel = loadImage('arteasel.png');
-  pic01 = loadImage('picture1.jpg');
-  pic02 = loadImage('picture2.jpg');
-  pic03 = loadImage('picture3.jpg');
+  pic01 = createImg('picture1.jpg');
+  pic02 = createImg('picture2.jpg');
+  pic03 = createImg('picture3.jpg');
   thirdThing = loadImage('TheThirdThing.png');
 }
 
@@ -95,13 +95,22 @@ function setup()
 
   //The Easels can be where we display cameras of pictures and clicking there will bring up the feeds.
   image(artEasel, imgWidth*0.17, imgHeight*0.55, imgWidth*0.07, imgHeight*0.07);
-  image(pic01, imgWidth*0.1968, imgHeight*0.5685, imgWidth*0.0187, imgHeight*0.0215);
+  pic01.position(imgWidth*0.1968, imgHeight*0.5685);
+  pic01.size(imgWidth*0.0187, imgHeight*0.0215);
+  pic01.mouseClicked(secret1);
+  pic01.mouseOver(zoom1);
   image(artEasel, imgWidth*0.592, imgHeight*0.62, imgWidth*0.07, imgHeight*0.07);
-  image(pic03, imgWidth*0.6186, imgHeight*0.6384, imgWidth*0.01875, imgHeight*0.0216);
+  pic03.position(imgWidth*0.6186, imgHeight*0.6384);
+  pic03.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic03.mouseClicked(secret3);
+  pic03.mouseOver(zoom3);
   image(artEasel, imgWidth*0.432, imgHeight*0.35, imgWidth*0.07, imgHeight*0.07);
-  image(pic02, imgWidth*0.458, imgHeight*0.369, imgWidth*0.01875, imgHeight*0.0216);
+  pic02.position(imgWidth*0.458, imgHeight*0.369); 
+  pic02.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic02.mouseClicked(secret2);
+  pic02.mouseOver(zoom2);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
-  image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  //image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
   //End Easel Placement
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
@@ -112,7 +121,7 @@ function setup()
   logoImg.size(imgWidth*0.025, imgWidth*0.025);
   logoImg.position(imgWidth*0.595, imgHeight*0.28);
   logoImg.hide();
-  logoImg.mouseClicked(secret1);
+  logoImg.mouseClicked(story1);
   treeImg.size(imgWidth*0.23, imgHeight*0.57);
   treeImg.position(imgWidth*0.15, imgHeight*0.31);
   treeImg.hide();
@@ -234,13 +243,22 @@ function resetScores()
 
   image(bgImg, 0, height*0.095, imgWidth, imgHeight);
   image(artEasel, imgWidth*0.17, imgHeight*0.55, imgWidth*0.07, imgHeight*0.07);
-  image(pic01, imgWidth*0.1968, imgHeight*0.5685, imgWidth*0.0187, imgHeight*0.0215);
+  pic01.position(imgWidth*0.1968, imgHeight*0.5685);
+  pic01.size(imgWidth*0.0187, imgHeight*0.0215);
+  pic01.mouseClicked(secret1);
+  pic01.mouseOver(zoom1);
   image(artEasel, imgWidth*0.592, imgHeight*0.62, imgWidth*0.07, imgHeight*0.07);
-  image(pic03, imgWidth*0.6186, imgHeight*0.6384, imgWidth*0.01875, imgHeight*0.0216);
+  pic03.position(imgWidth*0.6186, imgHeight*0.6384);
+  pic03.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic03.mouseClicked(secret3);
+  pic03.mouseOver(zoom3);
   image(artEasel, imgWidth*0.432, imgHeight*0.35, imgWidth*0.07, imgHeight*0.07);
-  image(pic02, imgWidth*0.458, imgHeight*0.369, imgWidth*0.01875, imgHeight*0.0216);
+  pic02.position(imgWidth*0.458, imgHeight*0.369); 
+  pic02.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic02.mouseClicked(secret2);
+  pic02.mouseOver(zoom2);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
-  image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  //image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
@@ -338,10 +356,31 @@ function secret1()
   window.location.assign('secret1.html');
 }
 
+function secret2()
+{
+  window.location.assign('secret1.html');
+}
+
+function secret3()
+{
+  window.location.assign('secret1.html');
+}
+
 function story1()
 {
   window.location.assign('story1/index.html');
 }
+
+function story2()
+{
+  window.location.assign('story1/index.html');
+}
+
+function story3()
+{
+  window.location.assign('story1/index.html');
+}
+
 function farmUrl()
 {
  // print("Put the url for the FARM stuff here.");
@@ -360,6 +399,30 @@ function swarmUrl()
   window.location.assign('swarm.html');
 }
 
+function zoom1() {
+  console.log("test");
+  pic01.size(imgWidth*0.24, imgHeight*0.35);
+  pic01.mouseOut(picReset);
+}
+
+function zoom2() {
+  console.log("test");
+  pic02.size(imgWidth*0.24, imgHeight*0.35);
+  pic02.mouseOut(picReset);
+}
+
+function zoom3() {
+  console.log("test");
+  pic03.size(imgWidth*0.24, imgHeight*0.35);
+  pic03.mouseOut(picReset);
+}
+
+function picReset() {
+  pic01.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic02.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic03.size(imgWidth*0.01875, imgHeight*0.0216);
+}
+
 function windowResized()
 {
   prevLocation = 0;
@@ -369,13 +432,22 @@ function windowResized()
 
   image(bgImg, 0, height*0.095, imgWidth, imgHeight);
   image(artEasel, imgWidth*0.17, imgHeight*0.55, imgWidth*0.07, imgHeight*0.07);
-  image(pic01, imgWidth*0.1968, imgHeight*0.5685, imgWidth*0.0187, imgHeight*0.0215);
+  pic01.position(imgWidth*0.1968, imgHeight*0.5685);
+  pic01.size(imgWidth*0.0187, imgHeight*0.0215);
+  pic01.mouseClicked(secret1);
+  pic01.mouseOver(zoom1);
   image(artEasel, imgWidth*0.592, imgHeight*0.62, imgWidth*0.07, imgHeight*0.07);
-  image(pic03, imgWidth*0.6186, imgHeight*0.6384, imgWidth*0.01875, imgHeight*0.0216);
+  pic03.position(imgWidth*0.6186, imgHeight*0.6384);
+  pic03.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic03.mouseClicked(secret3);
+  pic03.mouseOver(zoom3);
   image(artEasel, imgWidth*0.432, imgHeight*0.35, imgWidth*0.07, imgHeight*0.07);
-  image(pic02, imgWidth*0.458, imgHeight*0.369, imgWidth*0.01875, imgHeight*0.0216);
+  pic02.position(imgWidth*0.458, imgHeight*0.369); 
+  pic02.size(imgWidth*0.01875, imgHeight*0.0216);
+  pic02.mouseClicked(secret2);
+  pic02.mouseOver(zoom2);
   image(artEasel, imgWidth*0.72, imgHeight*0.31, imgWidth*0.07, imgHeight*0.07);
-  image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
+  //image(pic01, imgWidth*0.747, imgHeight*0.3285, imgWidth*0.0187, imgHeight*0.0215);
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);

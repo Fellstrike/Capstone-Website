@@ -39,11 +39,11 @@
   }
 
   function prevCamera() {
-    window.location.assign('secret3.html');
+    window.location.assign('secret1.html');
     }
 
     function nextCamera() {
-      window.location.assign('secret2.html');
+      window.location.assign('secret3.html');
       }
   
 
