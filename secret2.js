@@ -8,10 +8,10 @@
     createCanvas(windowWidth, windowHeight);
     
     // Create the iframe with dynamic width and height
-    myVideo = createDiv('<iframe id="videoFrame" src="https://www.youtube.com/embed/m_PzlrtKM-I?si=4g46CyI0yJ3nXF0N" frameborder="0" allow="accelerometer encrypted-media gyroscope picture-in-picture allow-modals allow-popups-to-escape-sandbox allow-presentation"></iframe>');
+    myVideo = createDiv('<iframe src="https://player.twitch.tv/rigosuavve>&parent=p5c2024.netlify.app" height="600" width="800" allowfullscreen></iframe>');
     
     // Position and size the video initially
-    resizeVideo();
+   // resizeVideo();
 
     indexButton = createButton('Gallery');
     indexButton.style('font-size', 30 + 'px');
