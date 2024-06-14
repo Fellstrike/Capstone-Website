@@ -500,7 +500,7 @@ function windowResized()
   textSize(imgWidth*0.02);
   text('Move your mouse or use the left and right arrow keys to navigate the gallery.', imgWidth*0.164, imgHeight*0.98);
   text('Seeds:' + acornNum, imgWidth*0.03, imgHeight*0.4);
-  text('ater:' + water, imgWidth*0.03, imgHeight * 0.5);
+  text('Water:' + water, imgWidth*0.03, imgHeight * 0.5);
   text('Tools:' + tools, imgWidth*0.03, imgHeight*0.6);
   text('Score:' + score, imgWidth*0.03, imgHeight * 0.7);
 

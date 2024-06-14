@@ -151,7 +151,7 @@ function draw() {
     RedText -= 20;
     mouseIsClicked = false;
   } 
-  else if (((keyIsPressed && key === ' ') || mouseIsPressed) && !(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) { // DUCK EXPLODE
+  else if (((keyIsPressed && key === ' ') || mouseIsPressed) && (!(CheckMove >= width*0.47 && CheckMove <= width*0.51) && !Lose && !click) || DuckTimer < 0) { // DUCK EXPLODE
     DuckExplode = 1;
     DuckBoom.play();
     Lose = true;

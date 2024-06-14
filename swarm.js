@@ -59,15 +59,18 @@ function draw() {
   }
   endShape(CLOSE);
 
+  let ducksStopped = 0;
   // Update and display particles
   for (let i = particles.length - 1; i >= 0; i--) {
     particles[i].update();
     particles[i].display();
     particles[i].constrain();
+    if (particles[i].isStopped()) {
+      ducksStopped++; }
   }
 
   // Check if the shape is filled
-  if (coveredArea / totalArea >= threshold) {
+  if (coveredArea / totalArea >= threshold || ducksStopped >= particles.length) {
     shapeIsFilled = true;
     if (!winSound.isPlaying()) {
       winSound.play();
