@@ -49,6 +49,10 @@ let artEasel;
 let pic01;
 let pic02;
 let pic03;
+let pic04;
+let picRand1;
+let picRand2;
+
 let thirdThing;
 
 let imgHeight;
@@ -65,6 +69,8 @@ let prevLocation;
 //need images for swarm, parth, and threshold
 
 function preload() {
+  let picRand1 = int(random(10));
+  let picRand2 = int(random(10));
   bgImg = loadImage('Paragon.png');
   treeImg = createImg('tree/MainTreeIcon.png');
   farmImg = createImg('FarmIcon.png');
@@ -78,9 +84,9 @@ function preload() {
   logoImg = createImg('OldFashionedLogoColor.png');
   eggLogo = loadImage('easterEggLogo.png');
   artEasel = loadImage('arteasel.png');
-  pic01 = createImg('picture1.jpg');
-  pic02 = createImg('picture2.jpg');
-  pic03 = createImg('picture3.jpg');
+  pic01 = createImg('/gallery/gallery' + picRand1 + '.jpg');
+  pic02 = createImg('/gallery/livestream.jpg');
+  pic03 = createImg('/gallery/picture' + picRand2 + '.jpg');
   pic04 = createImg('destruction.png');
   thirdThing = createImg('TheThirdThing.png');
   birdLogo = createImg('Bird/BirdGameIcon.png');

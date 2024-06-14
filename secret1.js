@@ -18,16 +18,16 @@
     indexButton.size(110, 50);
     indexButton.position(width * 0.1, height*0.1);
     indexButton.mouseClicked(toMain);
-    prevButton = createButton('Previous');
+    prevButton = createButton('Images');
     prevButton.style('font-size', 30 + 'px');
     prevButton.size(110, 50);
     prevButton.position(width * 0.05, height*0.55);
-    prevButton.mouseClicked(prevCamera);
-    nextButton = createButton('Next');
+    prevButton.mouseClicked(prevImage);
+    nextButton = createButton('Pictures');
     nextButton.style('font-size', 30 + 'px');
     nextButton.size(110, 50);
     nextButton.position(width*0.9, height*0.55);
-    nextButton.mouseClicked(nextCamera);
+    nextButton.mouseClicked(nextImage);
   }
   
   function draw() {
@@ -38,12 +38,12 @@
   window.location.assign('index.html');
   }
 
-  function prevCamera() {
+  function prevImage() {
     window.location.assign('secret3.html');
     }
 
-    function nextCamera() {
-      window.location.assign('secret2.html');
+    function nextImage() {
+      window.location.assign('secret4.html');
       }
   
 
