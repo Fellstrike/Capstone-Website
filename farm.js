@@ -178,7 +178,7 @@ function treeUrl() {
 }
 
 function duckUrl() {
-  window.location.assign('button.html');
+  window.location.assign('duck.html');
 }
 
 function swarmUrl() {
