@@ -69,11 +69,11 @@ function preload() {
   treeImg = createImg('tree/MainTreeIcon.png');
   farmImg = createImg('FarmIcon.png');
   waterImg = createImg('duck/DuckIcon.png');
-  swarmImg = createImg('swarmIcon.png');
+ // swarmImg = createImg('swarmIcon.png');
   treeMap = loadImage('tree/DrainTreeIcon.png');
   farmMap = loadImage('grayfarmicon.png');
   waterMap = loadImage('duck/WaterIcon.png');
-  swarmMap = loadImage('oldSwarmIcon.png');
+ // swarmMap = loadImage('oldSwarmIcon.png');
   selectSound = loadSound('sounds/select.wav');
   logoImg = createImg('OldFashionedLogoColor.png');
   eggLogo = loadImage('easterEggLogo.png');
@@ -83,6 +83,8 @@ function preload() {
   pic03 = createImg('picture3.jpg');
   pic04 = createImg('destruction.png');
   thirdThing = createImg('TheThirdThing.png');
+  birdLogo = createImg('Bird/BirdGameIcon.png');
+  oldBird = loadImage('Bird/oldBirdIcon.png');
 }
 
 function setup() 
@@ -119,7 +121,7 @@ function setup()
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
-  image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
+  image(oldBird, imgWidth*0.645, imgHeight*0.56, imgWidth*0.15, imgHeight*0.2);
   thirdThing.position(width*0.15, -imgHeight*0.0065); 
   thirdThing.size(imgWidth*0.7, imgHeight*0.29);
   thirdThing.mouseClicked(poster);
@@ -140,10 +142,10 @@ function setup()
   waterImg.position(imgWidth*0.49, imgHeight*0.305);
   waterImg.hide();
   waterImg.mouseClicked(duckUrl);
-  swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.645, imgHeight*0.56);
-  swarmImg.hide();
-  swarmImg.mouseClicked(swarmUrl);
+  birdLogo.size(imgWidth*0.15, imgHeight*0.2);
+  birdLogo.position(imgWidth*0.645, imgHeight*0.56);
+  birdLogo.hide();
+  birdLogo.mouseClicked(swarmUrl);
 
   fill(125);
   rect(imgWidth*0.01, imgHeight*0.334, imgWidth*0.11, imgHeight*0.5);
@@ -213,18 +215,18 @@ function draw()
   {
     waterImg.hide();
   }
-  if (locationNum == 4 || ((winMouseX >= imgWidth * 0.645 && winMouseX <= imgWidth * 0.84) && (winMouseY >= imgHeight * 0.56 && winMouseY <= imgHeight * 0.87)))
+  if (locationNum == 4 || ((winMouseX >= imgWidth * 0.645 && winMouseX <= imgWidth * 0.845) && (winMouseY >= imgHeight * 0.56 && winMouseY <= imgHeight * 0.76)))
   {
     locationNum = 4;
     if (!selectSound.isPlaying() && prevLocation != locationNum) {
       prevLocation = locationNum;
       selectSound.play();
     }
-    swarmImg.show();
+    birdLogo.show();
   }
   else
   {
-    swarmImg.hide();
+    birdLogo.hide();
   }
 }
 
@@ -269,7 +271,7 @@ function resetScores()
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
-  image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
+  image(oldBird, imgWidth*0.645, imgHeight*0.56, imgWidth*0.15, imgHeight*0.2);
   thirdThing.position(width*0.15, -imgHeight*0.0065); 
   thirdThing.size(imgWidth*0.7, imgHeight*0.29);
   image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
@@ -285,9 +287,9 @@ function resetScores()
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
   waterImg.position(imgWidth*0.49, imgHeight*0.305);
   waterImg.hide();
-  swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.645, imgHeight*0.56);
-  swarmImg.hide();
+  birdLogo.size(imgWidth*0.15, imgHeight*0.2);
+  birdLogo.position(imgWidth*0.645, imgHeight*0.56);
+  birdLogo.hide();
 
   fill(125);
   rect(imgWidth*0.01, imgHeight*0.334, imgWidth*0.11, imgHeight*0.5);
@@ -472,7 +474,7 @@ function windowResized()
   image(treeMap, imgWidth*0.15, imgHeight*0.31, imgWidth*0.23, imgHeight*0.57);
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
-  image(swarmMap, imgWidth*0.645, imgHeight*0.56, imgWidth*0.2, imgHeight*0.31);
+  image(oldBird, imgWidth*0.645, imgHeight*0.56, imgWidth*0.15, imgHeight*0.2);
   thirdThing.position(width*0.15, -imgHeight*0.0065); 
   thirdThing.size(imgWidth*0.7, imgHeight*0.29);
   image(eggLogo, imgWidth*0.595, imgHeight*0.28, imgWidth*0.025, imgWidth*0.025);
@@ -488,9 +490,9 @@ function windowResized()
   waterImg.size(imgWidth*0.09, imgHeight*0.18);
   waterImg.position(imgWidth*0.49, imgHeight*0.305);
   waterImg.hide();
-  swarmImg.size(imgWidth*0.2, imgHeight*0.31);
-  swarmImg.position(imgWidth*0.645, imgHeight*0.56);
-  swarmImg.hide();
+  birdLogo.size(imgWidth*0.15, imgHeight*0.2);
+  birdLogo.position(imgWidth*0.645, imgHeight*0.56);
+  birdLogo.hide();
 
   fill(125);
   rect(imgWidth*0.01, imgHeight*0.334, imgWidth*0.11, imgHeight*0.5);

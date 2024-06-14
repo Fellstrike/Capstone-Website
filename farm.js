@@ -31,6 +31,7 @@ let textContent;
 let waterButtonText;
 let plantButtonText;
 let harvestButtonText;
+let plant2;
 
 let harvestSound;
 let plantSound;
@@ -42,6 +43,7 @@ function preload() {
   badSoil = loadImage('farm/BadSoil.png');
   harvestImg = createImg('farm/Harvest_Icon.png');
   plantImg = loadImage('farm/Plant.png');
+  plant2 = loadImage('farm/PlantFullGrowth.png');
   seedImg = createImg('farm/seed_Icon.png');
   seedlingImg = loadImage('farm/Seedling.png');
   soilImg = loadImage('farm/Soil.png');
@@ -335,7 +337,7 @@ class Patch {
     image(soilImg, this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSizeY);
     if (this.planted) {
       //this.plotColor = color(170, 80, 35);
-      image(badSoil, this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSizeY);
+      image(seedlingImg, this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSizeY);
       if (this.watered) {
         //this.plotColor = color(100, 70, 35);
         image(wateredSoil, this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSizeY);
@@ -343,11 +345,11 @@ class Patch {
       if (this.curSize > 0  && !this.grown) {
         //fill(0, 255, 0);
         //ellipse(this.x, this.y - 5, this.curSize, this.curSize);
-        image(seedlingImg, this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSize-this.maxSize+this.curSize);
+        image(plantImg, this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSize-this.maxSize+this.curSize);
       }
       else if (this.curSize > this.maxSize/2+1)
         {
-          image(plantImg,  this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSizeY-this.maxSize+this.curSize);
+          image(plant2,  this.x - this.plotSizeX / 2, this.y - this.plotSizeY / 2, this.plotSizeX, this.plotSizeY-this.maxSize+this.curSize);
         }
     }
   }

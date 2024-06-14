@@ -10,22 +10,27 @@ function setup() {
     galleryButton = createButton('Gallery');
     galleryButton.size(110, 50);
     galleryButton.position(width*0.1, height/2);
+    galleryButton.mouseClicked(mainMenu);
 
     easterEgg = createImg('OldFashionedLogoColor.png');
-    easterEgg.position(width*0.68, height/2);
+    easterEgg.position(width*0.48, height*0.77);
     easterEgg.size(100, 100);
     easterEgg.mouseClicked(clickEgg);
     easterEgg.hide();
     easterEgg.mouseOut(unhighlightEgg);
     eggColor = createImg('easterEggLogo.png');
     eggColor.size(100,100);
-    eggColor.position(width*0.68, height/2);
+    eggColor.position(width*0.48, height*0.77);
     eggColor.mouseOver(highlightEgg);
 }
 
 function draw() {
     background(100);
     image(posterImg, width/4, 0, height*0.75, height);
+}
+
+function mainMenu() {
+    window.location.assign('/index.html');
 }
 
 function highlightEgg() {
