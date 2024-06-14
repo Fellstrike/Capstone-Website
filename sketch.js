@@ -66,6 +66,8 @@ let locationNum = 0;
 let selectSound;
 let prevLocation;
 
+let chatbot;
+
 //need images for swarm, parth, and threshold
 
 function preload() {
@@ -84,6 +86,7 @@ function preload() {
   logoImg = createImg('OldFashionedLogoColor.png');
   eggLogo = loadImage('easterEggLogo.png');
   artEasel = loadImage('arteasel.png');
+  chatbot = createImg('chatbotImg.png');
   pic01 = createImg('/gallery/gallery' + picRand1 + '.jpg');
   pic02 = createImg('/gallery/livestream.jpg');
   pic03 = createImg('/gallery/picture' + picRand2 + '.jpg');
@@ -128,6 +131,7 @@ function setup()
   image(farmMap, imgWidth*0.75, imgHeight*0.26, imgWidth*0.1, imgWidth*0.1);
   image(waterMap, imgWidth*0.485, imgHeight*0.305, imgWidth*0.1, imgHeight*0.2);
   image(oldBird, imgWidth*0.645, imgHeight*0.56, imgWidth*0.15, imgHeight*0.2);
+
   thirdThing.position(width*0.15, -imgHeight*0.0065); 
   thirdThing.size(imgWidth*0.7, imgHeight*0.29);
   thirdThing.mouseClicked(poster);
@@ -167,6 +171,10 @@ function setup()
   resetButton.size(imgWidth*0.09, imgHeight*0.06);
   resetButton.position(imgWidth*0.02, imgHeight*0.74);
   resetButton.mouseClicked(resetScores);
+
+  chatbot.size(imgWidth*0.05, imgWidth*0.05);
+  chatbot.position(imgWidth*0.79, imgHeight*0.75);
+  chatbot.mouseClicked(goToChat);
 }
 
 function draw() 
@@ -234,6 +242,11 @@ function draw()
   {
     birdLogo.hide();
   }
+}
+
+function goToChat()
+{
+  window.location.assign('https://character.ai/chat/KvdIyElMwSSnXfoyhfqVAR5mteDhT5jI3zLRY7jZsbo');
 }
 
 function resetScores()
